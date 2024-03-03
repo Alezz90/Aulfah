@@ -1,0 +1,58 @@
+﻿@model Customer
+
+
+<div class="container">
+    <div class="row-1 ">
+        <div class="text-center mt-3">
+            <h2>Edit Profile</h2>
+        </div>
+
+    </div>
+    <div class="row-7 border m-5 p-3">
+        <div class="text-center">
+            <h5>Personal Information</h5>
+        </div>
+
+        <form class="">
+            <div class="row">
+                <div class="col-6">
+                    <label for="FName" class="form-label mt-2">First Name</label>
+                    <input asp-for="FName" class="form-control" id="FName" placeholder="Enter Your First Name">
+                </div>
+                <div class="col-6">
+                    <label for="LName" class="form-label mt-2">Last Name</label>
+                    <input asp-for="LName" class="form-control" id="LName" placeholder="Enter Your Last Name">
+                </div>
+            </div>
+            <label for="Email" class="form-label mt-2">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="Enter Your Email">
+
+            <label for="Phone" class="form-label mt-2">Phone Number</label>
+            <input asp-for="Phone" class="form-control" id="Phone" placeholder="Enter Your Phone Number">
+
+            <label for="dateOfBirth" class="form-label mt-2">Date of Birth</label>
+            <input type="date" class="form-control" id="dateOfBirth" placeholder="DD/MM/YYYY">
+
+            <div class="row">
+                <div class="col-6">
+                    <label for="Goverment" class="form-label mt-2">Goverment</label>
+                    <input asp-for="Goverment" class="form-control" id="Goverment" placeholder="Enter Your Goverment">
+                </div>
+                <div class="col-6">
+                    <label for="State" class="form-label mt-2">State</label>
+                    <input asp-for="State" class="form-control" id="State" placeholder="Enter Your State">
+                </div>
+            </div>
+
+           @*  <label for="Password" class="form-label mt-2">Password</label>
+            <input asp-for="Password" class="form-control" id="State" placeholder="*********"> *@
+
+            <button type="submit" class="btn w-25 mt-3"> Edit </button>
+        </form>
+
+    </div>
+
+
+</div>
+
+

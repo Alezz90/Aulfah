@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_RegisterationLayout.cshtml";
+
+    // ViewData["Title"] = "Registeration Page";
+}
+
+<div class="d-flex justify-content-center mt-lg-5">
+    <div class="card m-3 w-50 signcard" style="background: #A2D48D; color:#1C395E;">
+    
+        <div class="card-body">
+
+            <div class=" card-title text-center mb-4 circle-inner">
+                <h2 class="circle-text circle-text">Sign Up</h2>
+        </div>
+
+      <form id="signup-form" class="mx-4">
+
+        @* <div class="circle-inner"></div>
+        <div class="circle"></div> *@
+
+        <div class="row">
+
+            <div class="col-6">
+                        <label class="form-label mb-0" for="first-name">First Name</label><br>
+                <input class="form-control " type="text" id="first-name" name="first-name" required><br>
+            </div>
+
+            <div class="col-6">
+                        <label class="form-label mb-0" for="last-name">Last Name</label><br>
+                <input class="form-control" type="text" id="last-name" name="last-name" required><br>
+            </div>
+
+        </div>
+
+        <div class="row"> 
+
+            <div class="col-6">
+                        <label class="form-label mb-0" for="phone-no">Phone</label><br>
+                <input class="form-control" type="tel" id="phone-no" name="phone-no" required><br>
+            </div>
+
+            <div class="col-6">
+                        <label class="form-label mb-0" for="age">Age</label><br>
+                <input class="form-control " type="number" id="age" name="age" min="1" max="120" required><br>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-6">
+                        <label class="form-label mb-0" for="email">Email</label><br>
+                <input class="form-control " type="email" id="email" name="email" required><br>
+                </div>
+
+                <div class="col-6">
+                <label class="form-label mb-0" for="password">Password</label><br>
+                <input class="form-control" type="password" id="password" name="password" 
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
+                </div>
+
+            </div>
+            <div class="text-center ">
+                    <input class="btn signup-button" type="submit" value="Sign up">
+                </div>
+                <div class="text-center mt-2">
+                    <a   href="#" class="text-decoration-none " style="color:#1c395e;">You have an account?</a>
+                    </div>
+      </form>
+
+    </div>
+
+</div>
+</div>

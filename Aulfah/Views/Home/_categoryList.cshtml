@@ -1,0 +1,11 @@
+﻿@model List<Category>
+@foreach (var item in Model)
+{
+
+    <div class="flex-column m-3">
+        <a href="/Product/ProducList?id=@item.CategoryID">
+    <img src="~/Files/Images/@item.CategoryImage" alt="ctegory Image" class="rounded-circle categoryImage" />
+    <h5 class="H5Title">@item.Name</h5>
+        </a>
+    </div>
+}

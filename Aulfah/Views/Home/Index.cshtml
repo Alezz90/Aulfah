@@ -1,0 +1,43 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Home Page";
+
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+
+    
+    ViewData["Categories"] = ViewData["Categories"];
+}
+
+<div class="HomeContent">
+
+    <h1 class="text-center">In The Magnifience Of Every Artwork,There Is A Story.</h1>
+  
+    <div class=" m-4 d-flex justify-content-center">
+       
+    @foreach (var item in Model)
+            {
+              <div class="card mb-1  m-2 " style="width: 15rem;">
+                <a href="/Product/Details?id=@item.ProductId">
+            @if (string.IsNullOrEmpty(@item.ProductImage))
+            {
+                <i class="bi bi-person-circle iconAccount"></i>
+            }
+            else
+            {
+                <img src="~/Files/Images/@item.ProductImage" class="card-img-top" alt="Product Name" />
+            }
+        
+        <div class="card-body">
+            <h5 class="card-title">@item.ProductName</h5>
+                <p class="card-text">@item.Description</p>
+           
+        </div>
+                </a>
+    </div>
+            }
+    <div class=" m-4 d-flex justify-content-center">
+        @await Html.PartialAsync("_categoryList", ViewData["Categories"])
+    </div>
+</div>
+</div>
+

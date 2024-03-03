@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  /*font-family: "Josefin Sans";*/
+}
+
+footer {
+    position: fixed;
+    display:flex;
+    flex-wrap:nowrap;
+    bottom: 0;
+    width: 100%;
+    min-height: 40px;
+    background-color: #1C395E;
+    color: #A2D48D;
+    padding-top: 0.6em;
+    padding-bottom: 0.8em;
+    padding-left: 1em;
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+    footer.footer-down {
+        transform: translateY(100%);
+    }
+
+.content {
+    min-height: calc(100vh - 100px); /* Adjust the value (100px) based on the height of your footer */
+}
+
+
+.footerContant {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #A2D48D;
+}
+.footerContant .iconSocial {
+  padding-top: 8px;
+  display: flex;
+  margin-left: 10px;
+}
+.footerContant .iconSocial a {
+  color: #A2D48D;
+  font-size: 1.7em;
+  margin-right: 20px;
+}
+
+.contact_Phone_Email {
+  display: flex;
+  flex-direction: row;
+  margin-right: 100px;
+  font-family: "sans-serif";
+}
+.contact_Phone_Email .box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #A2D48D;
+  margin-right: 15px;
+}
+.contact_Phone_Email .box i {
+  font-size: 1.7em;
+  margin-right: 20px;
+}
+.contact_Phone_Email .box a {
+  text-decoration: none;
+  color: #A2D48D;
+}
+.contact_Phone_Email .box p {
+  padding-top: 20px;
+}
+
+.help {
+  display: flex;
+  flex-direction: row;
+  font-family: "Josefin Sans";
+}
+.help .box {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  color: #A2D48D;
+  padding-top: 10px;
+  margin-right: 15px;
+}
+.help .box i {
+  font-size: 1.7em;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+.help .box a {
+  text-decoration: none;
+  color: #A2D48D;
+}
+.help .box p {
+  padding-top: 10px;
+}
+.help .inputBox {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+.help .inputBox input {
+  width: 80%;
+  padding: 5px 0;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  resize: none;
+  background-color: #A2D48D;
+}
+.help .inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  font-size: 1em;
+  pointer-events: none;
+  transition: 0.5s ease;
+  color: #666;
+}/*# sourceMappingURL=Aulfah.css.map */
+
+.contact_Phone_Email {
+  display: flex;
+  flex-direction: row;
+  margin-right: 100px;
+  font-family: "sans-serif";
+}
+.contact_Phone_Email .box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #A2D48D;
+  margin-right: 15px;
+}
+.contact_Phone_Email .box i {
+  font-size: 1.7em;
+  margin-right: 20px;
+}
+.contact_Phone_Email .box a {
+  text-decoration: none;
+  color: #A2D48D;
+}
+.contact_Phone_Email .box p {
+  padding-top: 20px;
+}
+
+.help {
+  display: flex;
+  flex-direction: row;
+  font-family: "Josefin Sans";
+}
+.help .box {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  color: #A2D48D;
+  padding-top: 10px;
+  margin-right: 15px;
+}
+.help .box i {
+  font-size: 1.7em;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+.help .box a {
+  text-decoration: none;
+  color: #A2D48D;
+}
+.help .box p {
+  padding-top: 10px;
+}
+.help .inputBox {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+.help .inputBox input {
+  width: 80%;
+  padding: 5px 0;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  resize: none;
+  background-color: #A2D48D;
+}
+.help .inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  font-size: 1em;
+  pointer-events: none;
+  transition: 0.5s ease;
+  color: #666;
+}/*# sourceMappingURL=Aulfah.css.map */
+
+.links {
+    color: #A2D48D;
+}
+
+#button {
+    color: #A2D48D;
+    border-color: #A2D48D;
+}
+
+    #button:hover {
+        background-color: #A2D48D;
+        color: #1C395E;
+    }
+
+.footer p {
+    margin: 0;
+}
+
+/*@media (max-width: 768px) {
+    .footer {
+        text-align: center;
+    }
+
+        .footer .container .row {
+            flex-direction: column;
+        }
+}
+*/
+
+
