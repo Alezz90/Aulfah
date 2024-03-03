@@ -65,14 +65,14 @@ namespace Aulfah.PL.Controllers
 
         public IActionResult Create(ProductVM product)
         {
-            var artist = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var artist = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
           //  if (ModelState.IsValid)
           ///  {
                 product.ProductImage = DucomentConfi.DocumentUplod(product.ProductPath, "images");
 
-                product.ArtistID = artist.First();
-                var pro = _mapper.Map<ProductVM, Product>(product);
+            product.Id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var pro = _mapper.Map<ProductVM, Product>(product);
 
                 _unitofWork.ProductRepository.Create(pro);
                 TempData["success"] = "added successfully";

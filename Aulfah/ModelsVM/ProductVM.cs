@@ -1,6 +1,7 @@
 ﻿using Aulfah.DAL.Model;
 using Aulfah.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Aulfah.PL.ModelsVM
 {
@@ -15,7 +16,8 @@ namespace Aulfah.PL.ModelsVM
         public IFormFile ProductPath { get; set; }
         public string? Description { get; set; }
         public string? Size { get; set; }
-        public int? ArtistID { get; set; }
+        [ForeignKey("Users")]
+        public string? Id { get; set; }
        
         public int? CategoryID { get; set; }
         public Category category { get; set; }

@@ -18,8 +18,8 @@ namespace Aulfah.Models
         public string? Size { get; set; }
         public int Quantity { get; set; }
 
-        [ForeignKey("Id")]
-        public int? Id { get; set; }
+        [ForeignKey("Users")]
+        public string? Id { get; set; }
         public ICollection<ApplicationUser> Users { get; set; }
 
         // alezz add category 
