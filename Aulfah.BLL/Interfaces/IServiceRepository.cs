@@ -11,6 +11,6 @@ namespace Aulfah.BLL.Interfaces
     public interface IServiceRepository : IGenericRepository<Service>
     {
 
-        IEnumerable<Service> Serveciuser(string id);
+        IEnumerable<Service> UserServices(string id);
     }
 }

@@ -16,14 +16,13 @@ namespace Aulfah.Models
         // Shaima Added Default Value
         public string? Status { get; set; } = "Pending";
 
-     
-        // public ICollection<Artist> Artists { get; set; } = new List<Artist>();
-        //public ICollection<Customer> Customers { get; set; } = new List<Customer>();
+       // [ForeignKey("Orders")]
+       // public int? OrdersID { get; set; }
+      //  public Orders Orders { get; set; }
 
-        [ForeignKey("Orders")]
-        public int? OrdersID { get; set; }
-        public Orders Orders { get; set; }
 
+        [ForeignKey("Users")]
+        public string? Id { get; set; }
         public ICollection<ApplicationUser> Users { get; set; } = new List<ApplicationUser>();
     }
 }

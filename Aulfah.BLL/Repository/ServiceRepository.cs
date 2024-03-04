@@ -15,22 +15,13 @@ namespace Aulfah.DAL.Repositories
             _context = context;
         }
 
-        //ar categProducts = _dBContext.Category.Include(c => c.Products).ToList();
-        // var user =_context.Services.Include(c=> c.).ToList();
-
-        public IEnumerable<Service> Serveciuser(string id)
+        public IEnumerable<Service> UserServices(string Userid)
         {
-            //  var user = _context.Services.Where(e => e.Artists.Contains(id));
-           // var userServices = _context.Services.Where(service => service.User == id).ToList();
+            var prod = _context.Services.Where(e => e.Id == Userid).ToList();
 
-            return null;
+            return prod;
         }
 
-       /* IEnumerable<ApplicationUser> IServiceRepository.Serveciuser(Artist id)
-        {
-            var user = _context.Services.Where(e => e.Artists.Contains(id));
-
-            return (IEnumerable<ApplicationUser>)user;
-        }*/
+      
     }
 }

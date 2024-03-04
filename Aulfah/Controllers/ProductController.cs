@@ -65,8 +65,6 @@ namespace Aulfah.PL.Controllers
 
         public IActionResult Create(ProductVM product)
         {
-            //var artist = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
           //  if (ModelState.IsValid)
           ///  {
                 product.ProductImage = DucomentConfi.DocumentUplod(product.ProductPath, "images");
