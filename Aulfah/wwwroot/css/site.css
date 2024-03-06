@@ -100,3 +100,16 @@ body {
     color: #1C395E;
 }
 
+.linkcolor li a {
+    color:#1C395E;
+}
+.linkcolor a {
+    color: #1C395E;
+}
+
+
+/*.dropdown:hover .dropdown-menu {
+    background-color: #1C395E ;
+    color: #A2D48D;
+}*/
+

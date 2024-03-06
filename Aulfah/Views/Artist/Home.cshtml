@@ -114,10 +114,11 @@
     </div>
 
     <!-- ================ Services Details List ================= -->
+    <div class="d-flex justify-contant-between">
     <div class="details">
-        <div class="recentServices">
+        <div class="recentServices mx-5 shadow">
             <div class="cardHeader">
-                <h2>Recent Services</h2>
+                <h4>Recent Services</h4>
                 @* Edit this later *@
                 @* <a href="#" class="btn">View All</a> *@
             </div>
@@ -153,15 +154,15 @@
                             }           
             else
             {
-                <h2>  No Services Available </h2>
+                <h4>  No Services Available </h4>
             }
             }
         </div>
 
         <!-- ================= My Product ================ -->
-        <div class="recentProduct">
+        <div class="recentProduct  shadow mx-5">
             <div class="cardHeader">
-                <h2>Recent Product</h2>
+                <h4>Recent Product</h4>
             </div>
             @if (artistProduct != null && artistProduct.Count() > 0)
             {
@@ -186,7 +187,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                        <h4>@product.ProductName  <span>@product.Quantity</span> $ @product.ProductPrice</h4>
+                                        <h5>@product.ProductName  <span>@product.Quantity</span> $ @product.ProductPrice</h5>
                                 </td>
                             </tr>
                         }
@@ -197,7 +198,7 @@
             }
             else
             {
-                <h2>  No Products Available </h2>
+                <h4>  No Products Available </h4>
             } 
         </div>
     </div>

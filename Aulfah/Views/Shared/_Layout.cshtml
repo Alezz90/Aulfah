@@ -21,19 +21,153 @@
     <header>
         <nav class="headnavbar">
             <div class="col justify-content-around mx-auto my-auto ">
-             @if (User.IsInRole(SD.Role_Customer))
-             {
-                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Aulfah</a>
-             }
-              else if (User.IsInRole(SD.Role_Artist))
-             {
+                @if (User.IsInRole(SD.Role_Artist))
+                {
                     <a class="navbar-brand link-light text-decoration-none" asp-area="" asp-controller="Artist" asp-action="Home">Aulfah</a>
 
-             }
+                }
+                else
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Aulfah</a>
+                }
+
 
             </div>
+           
+            <div class="dropdown linkcolor" >
+                <a class="link dropdown-toggle mx-3 text-decoration-none" href="#" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-three-dots iconNav "></i>
+                </a>
 
-            <a href="#" class="link toggle collapsed mx-5" data-bs-toggle="collapse" data-bs-target="#sidebar-collapse" aria-expanded="false"><i class="bi bi-three-dots iconNav"></i></a>
+                <ul class="dropdown-menu" style="background:#A2D48D;" aria-labelledby="dropdownMenuButton">
+                    @if (User.IsInRole(SD.Role_Artist))
+                    {
+                        <li>
+                            <a asp-action="Home" asp-controller="Artist" class="dropdown-item rounded text-decoration-none">
+                                <i class="fa-solid fa-house mx-1" style="color: #1C395E ;"></i>Home
+                            </a>
+                        </li>
+                    }
+                    else if (User.IsInRole(SD.Role_Customer))
+
+                    {
+                        <li>
+                            <a asp-action="Index" asp-controller="Home" class="dropdown-item  rounded text-decoration-none">
+                                <i class="fa-solid fa-house mx-1" style="color: #1C395E ;"></i> Home
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="Index" asp-controller="Cart" class="dropdown-item  rounded text-decoration-none">
+                                Orders
+                            </a>
+                        </li>
+
+                    }
+                    <li>
+                        <a asp-action="Index" asp-controller="Cart" class="dropdown-item rounded text-decoration-none">
+                            <i class="fa-solid fa-circle-info mx-1" style="color: #1C395E ;"></i>About Aulfah
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    @if (User.IsInRole(SD.Role_Customer))
+                    {
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-item dropdown-toggle rounded text-decoration-none">
+                                <i class="fa-solid fa-shapes mx-1" style="color: #1C395E;"></i>Categories
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
+                                        All Categories
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
+                                        Category 1
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
+                                        Category 2
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
+                                        Category 3
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                    }
+
+                    <li>
+                        <a asp-action="Index" asp-controller="Product" class="dropdown-item rounded text-decoration-none">
+                            <i class="fa-solid fa-bag-shopping mx-1" style="color: #1C395E ;"></i>Products
+                        </a>
+                    </li>
+                    @if (User.IsInRole(SD.Role_Customer))
+                    {
+                        <li>
+                            <a asp-action="Home" asp-controller="Artist" class="dropdown-item rounded text-decoration-none">
+                                <i class="fa-solid fa-palette mx-1" style="color: #1C395E;"></i>Artists
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="Home" asp-controller="Artist" class="dropdown-item rounded text-decoration-none">
+                                <i class="fa-solid fa-star mx-1" style="color: #1C395E;"></i>Customize Products
+                            </a>
+                        </li>
+                    }
+                    else if (User.IsInRole(SD.Role_Artist))
+                    {
+                        <li>
+                            <a herf="#" class="dropdown-item rounded text-decoration-none">
+                               <i class="fa-solid fa-star mx-1" style="color: #1C395E;"></i>Services
+                            </a>
+                        </li>
+                    }
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    
+                            @if (User.IsInRole(SD.Role_Customer))
+                            {
+                                <li>
+                                    <a asp-action="Profile" asp-controller="Customer" class="dropdown-item rounded text-decoration-none">
+                                <i class="fa-solid fa-user mx-1" style="color: #1C395E;"></i>Profile
+                                    </a>
+                                </li>
+                            }
+                            else if (User.IsInRole(SD.Role_Artist))
+                            {
+
+                                <li>
+                                    <a asp-action="Profile" asp-controller="Customer" class="dropdown-item rounded text-decoration-none">
+                                <i class="fa-solid fa-user mx-1" style="color: #1C395E;"></i>Profile
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                <a href="#" class="dropdown-item rounded text-decoration-none">
+                            <i class="fa-solid fa-gear mx-1" style="color: #1C395E;"></i>Settings
+                                </a>
+                            </li>
+
+                            <li>
+                                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <input id="logout" type="submit" class="input-group-text border-0" value="Logout" style="background: #A2D48D ; color:#1C395E;" />
+                                </form>
+                            </li>
+                       
+
+                </ul>
+
+            </div>
+            @* <a href="#" class="link toggle collapsed mx-5" data-bs-toggle="collapse" data-bs-target="#sidebar-collapse" aria-expanded="false"><i class="bi bi-three-dots iconNav"></i></a> *@
             <div class="col col-7 my-auto">
                 <form asp-controller="Home" asp-action="Index" method="post" class="form-inputs ">
                     <input type="text" title="search" name="name" class="form-control rounded-pill searchfrorm" />
@@ -43,16 +177,19 @@
             </div>
             <div class="col col-3">
                 <ul class="navbar-nav flex-grow-1 list-group-horizontal justify-content-end">
-                    <li class="nav-item mx-auto my-auto">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Registeration" asp-action="Signin">
-                            <i class="bi bi-heart-fill iconNav"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-auto my-auto">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">
-                            <i class="bi bi-cart-fill iconNav"></i>
-                        </a>
-                    </li>
+                    @if (User.IsInRole(SD.Role_Customer))
+                    {
+                        <li class="nav-item mx-auto my-auto">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Registeration" asp-action="Signin">
+                                <i class="bi bi-heart-fill iconNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-auto my-auto">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">
+                                <i class="bi bi-cart-fill iconNav"></i>
+                            </a>
+                        </li>
+                    }
                     
                     @if (User.IsInRole(SD.Role_Customer) || User.IsInRole(SD.Role_Artist))
                     {
@@ -86,7 +223,7 @@
         </nav>
     </header>
     @* ----------SIDE BAR--------- *@
-    <div class="collapse wrapper" id="sidebar-collapse">
+    @*<div class="collapse wrapper" id="sidebar-collapse">
 
 
         <nav class="flex-shrink-0 p-3 sidebar" id="sidebar" style="width: 280px;">
@@ -129,7 +266,7 @@
                             <li><a href="#" class="link-light rounded text-decoration-none">Category 1</a></li>
                             <li><a href="#" class="link-light rounded text-decoration-none">Category 2</a></li>
                             <li><a href="#" class="link-light rounded text-decoration-none">Category 3</a></li>
-                            @* <li><a href="#" class="link-dark rounded">Category 4</a></li> *@
+                           
                         </ul>
                     </div>
                 </li>
@@ -190,7 +327,7 @@
                 </li>
             </ul>
         </nav>
-    </div>
+    </div>*@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
