@@ -11,6 +11,6 @@ namespace Aulfah.BLL.Interfaces
     {
         IEnumerable<Product> Search(string? name, int? id);
         IEnumerable<Product> SearchCat(int id);
-
+        IEnumerable<Product> UserProduct(string UserID);
     }
 }

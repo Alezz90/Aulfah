@@ -65,6 +65,23 @@ namespace Aulfah.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Services",
+                columns: table => new
+                {
+                    ServiceID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Services", x => x.ServiceID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Shipments",
                 columns: table => new
                 {
@@ -173,7 +190,7 @@ namespace Aulfah.DAL.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Size = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: true),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryID = table.Column<int>(type: "int", nullable: true),
                     CartId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -185,6 +202,54 @@ namespace Aulfah.DAL.Migrations
                         column: x => x.CartId,
                         principalTable: "Cart",
                         principalColumn: "CartId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    OrderID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    dateCraeted = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ServiceID = table.Column<int>(type: "int", nullable: true),
+                    TrackID = table.Column<int>(type: "int", nullable: false),
+                    ShipmentID = table.Column<int>(type: "int", nullable: false),
+                    PaymentID = table.Column<int>(type: "int", nullable: false),
+                    CartID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.OrderID);
+                    table.ForeignKey(
+                        name: "FK_Orders_Cart_CartID",
+                        column: x => x.CartID,
+                        principalTable: "Cart",
+                        principalColumn: "CartId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_Payments_PaymentID",
+                        column: x => x.PaymentID,
+                        principalTable: "Payments",
+                        principalColumn: "PaymentId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_Services_ServiceID",
+                        column: x => x.ServiceID,
+                        principalTable: "Services",
+                        principalColumn: "ServiceID");
+                    table.ForeignKey(
+                        name: "FK_Orders_Shipments_ShipmentID",
+                        column: x => x.ShipmentID,
+                        principalTable: "Shipments",
+                        principalColumn: "ShipmentID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_Track_TrackID",
+                        column: x => x.TrackID,
+                        principalTable: "Track",
+                        principalColumn: "TrackId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,6 +338,30 @@ namespace Aulfah.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserServices",
+                columns: table => new
+                {
+                    ServicesServiceID = table.Column<int>(type: "int", nullable: false),
+                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserServices", x => new { x.ServicesServiceID, x.UsersId });
+                    table.ForeignKey(
+                        name: "FK_UserServices_AspNetUsers_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserServices_Services_ServicesServiceID",
+                        column: x => x.ServicesServiceID,
+                        principalTable: "Services",
+                        principalColumn: "ServiceID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CategoryProduct",
                 columns: table => new
                 {
@@ -317,95 +406,6 @@ namespace Aulfah.DAL.Migrations
                         column: x => x.ProductsProductId,
                         principalTable: "Product",
                         principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    OrderID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    dateCraeted = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ServiceID = table.Column<int>(type: "int", nullable: false),
-                    TrackID = table.Column<int>(type: "int", nullable: false),
-                    ShipmentID = table.Column<int>(type: "int", nullable: false),
-                    PaymentID = table.Column<int>(type: "int", nullable: false),
-                    CartID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.OrderID);
-                    table.ForeignKey(
-                        name: "FK_Orders_Cart_CartID",
-                        column: x => x.CartID,
-                        principalTable: "Cart",
-                        principalColumn: "CartId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_Payments_PaymentID",
-                        column: x => x.PaymentID,
-                        principalTable: "Payments",
-                        principalColumn: "PaymentId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_Shipments_ShipmentID",
-                        column: x => x.ShipmentID,
-                        principalTable: "Shipments",
-                        principalColumn: "ShipmentID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_Track_TrackID",
-                        column: x => x.TrackID,
-                        principalTable: "Track",
-                        principalColumn: "TrackId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Services",
-                columns: table => new
-                {
-                    ServiceID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OrdersID = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Services", x => x.ServiceID);
-                    table.ForeignKey(
-                        name: "FK_Services_Orders_OrdersID",
-                        column: x => x.OrdersID,
-                        principalTable: "Orders",
-                        principalColumn: "OrderID");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserServices",
-                columns: table => new
-                {
-                    ServicesServiceID = table.Column<int>(type: "int", nullable: false),
-                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserServices", x => new { x.ServicesServiceID, x.UsersId });
-                    table.ForeignKey(
-                        name: "FK_UserServices_AspNetUsers_UsersId",
-                        column: x => x.UsersId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserServices_Services_ServicesServiceID",
-                        column: x => x.ServicesServiceID,
-                        principalTable: "Services",
-                        principalColumn: "ServiceID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -492,11 +492,6 @@ namespace Aulfah.DAL.Migrations
                 column: "CartId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Services_OrdersID",
-                table: "Services",
-                column: "OrdersID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserProduct_UsersId",
                 table: "UserProduct",
                 column: "UsersId");
@@ -505,30 +500,10 @@ namespace Aulfah.DAL.Migrations
                 name: "IX_UserServices_UsersId",
                 table: "UserServices",
                 column: "UsersId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Orders_Services_ServiceID",
-                table: "Orders",
-                column: "ServiceID",
-                principalTable: "Services",
-                principalColumn: "ServiceID",
-                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Orders_Cart_CartID",
-                table: "Orders");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Orders_Payments_PaymentID",
-                table: "Orders");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Orders_Services_ServiceID",
-                table: "Orders");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -548,6 +523,9 @@ namespace Aulfah.DAL.Migrations
                 name: "CategoryProduct");
 
             migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
                 name: "UserProduct");
 
             migrationBuilder.DropTable(
@@ -560,28 +538,25 @@ namespace Aulfah.DAL.Migrations
                 name: "Category");
 
             migrationBuilder.DropTable(
-                name: "Product");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Cart");
-
-            migrationBuilder.DropTable(
                 name: "Payments");
-
-            migrationBuilder.DropTable(
-                name: "Services");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Shipments");
 
             migrationBuilder.DropTable(
                 name: "Track");
+
+            migrationBuilder.DropTable(
+                name: "Product");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Services");
+
+            migrationBuilder.DropTable(
+                name: "Cart");
         }
     }
 }
