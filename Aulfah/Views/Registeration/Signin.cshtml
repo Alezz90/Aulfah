@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_RegisterationLayout.cshtml";
+
+    // ViewData["Title"] = "Registeration Page";
+}
+
+<div class="d-flex justify-content-center mt-lg-5">
+    <div class="card m-3 signcard signin" style="background: #A2D48D; color:#1C395E;">
+        
+
+    <div class="card-body ">
+            <div class=" card-title text-center mb-4 circle-inner">
+                <h2 class="circle-text circle-text">Sign In</h2>
+            </div>
+
+
+    <form id="signup-form">
+
+        @* <div class="circle-inner"></div>
+        <div class="circle"></div> *@
+
+
+         <div class="">
+             
+             <div class="">
+
+            <label class="form-label mb-0 mx-4"  for="email">Email</label><br>
+            <input type="email" id="email" name="email" required class="form-control mx-4" style="width:400px;"><br>
+
+            <label class="form-label  mb-0 mx-4" for="password">Password</label><br>
+                        <input type="password" id="password" name="password" class="form-control mx-4" style="width:400px;"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+            <br>
+              </div>
+         
+
+            <div class="d-flex d-inline-block justify-content-center mb-3">
+                        <a href="#" class=" text-decoration-none" style="color:#1c395e;">Forget Password?</a>
+            </div>
+          </div>
+               
+                @* <input class="btn" type="submit" value="Google" /> *@
+                @* <input class="btn" type="submit" value="FaceBook" /> *@
+            
+            <div class="text-center">
+                <input class="btn signup-button " type="submit" value="Sign in" />
+            </div>
+
+                <div class="d-flex d-inline-block justify-content-center mt-3">
+                    <a href="#" class="text-decoration-none" style="color:#1c395e;"> Create New Account</a>
+                    <a href="#"><i class="fa-brands fa-google mx-3" style="color: #1c395e;"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook" style="color: #1c395e;"></i></a>
+                </div>
+           
+
+    </form>
+
+    </div>
+    </div>
+    </div>

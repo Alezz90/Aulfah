@@ -1,0 +1,71 @@
+﻿@model Product
+
+<div class="container">
+    <div>
+        <a href="#" alt ="bck to list ">back </a>
+    </div>
+    <div class="row border-5 shadow-lg p-3 mb-5 bg-white rounded m-3">
+        <div class="d-flex col-2 m-3 p-4">
+            @* Loop the picture  *@
+            <div class="flex-column">
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <img src="~/files/images/@Model.ProductImage" width="150px" />
+                </div>
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <img src="~/files/images/@Model.ProductImage" width="150px" />
+                </div>
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <img src="~/files/images/@Model.ProductImage" width="150px" />
+                </div>
+               
+            </div>
+        </div>
+        <div class="d-flex col-6 p-3 card shadow-lg p-2 mb-5 bg-white rounded">
+            <div class="d-flex row m-2">
+                <div class="d-flex align-items-end flex-column">
+                <i class="bi bi-share-fill iconNav"></i>
+                <i class="bi bi-heart-fill iconNav"></i>
+               </div>
+            </div>
+            <div class="d-flex row m-2">
+                <div class="d-flex justify-content-center ">
+                <img src="~/files/images/@Model.ProductImage" width="300px" />
+                </div>
+            </div>
+        </div>
+        <div class=" d-flex col-auto p-3">
+            <div class="flex-column align-content-center flex-wrap p-2">
+                <h3>@Model.ProductName</h3>
+                <p>@Model.Description</p>
+                <input type="number" name="numberQ" value="Quntity" />
+                <a href="/Product/Addtocart?id=@Model.ProductId"> add to cart </a>
+            </div>
+        </div>
+    </div>
+    <div class="row shadow-lg p-2 mb-5 bg-white rounded">
+        <h3>Review</h3>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
+    <div class="row shadow-lg p-2 mb-5 bg-white rounded">
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
+</div>

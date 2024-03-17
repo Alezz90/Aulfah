@@ -1,0 +1,40 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.sidebar {
+    color: #ffffff;
+    background: #1C395E;
+    
+}
+
+.wrapper {
+    display: flex;
+    height: auto;
+}
+
+#sidebar {
+    width: 280px;
+    transition: margin-left 0.3s;
+}
+
+.wrapper.sidebar-toggled #sidebar {
+    margin-left: -280px;
+}
+
+#sidebar.toggled {
+    margin-left: 0;
+}
+
+/*.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;*/ /* Initially hidden to the right */
+    /*width: 280px;
+    height: 100vh;
+    background-color: #333;
+    transition: right 0.3s ease;
+}
+
+.wrapper {
+    overflow-x: hidden;*/ /* Hide the horizontal overflow */
+/*}*/

@@ -1,0 +1,66 @@
+﻿.cart {
+    display: flex;
+    color: #1C395E;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.CartCard {
+    border: 30px;
+    color: #1C395E;
+    border-radius: 10px;
+    border: 2px solid #dddddd;
+}
+
+.carddetail {
+    background: #A2D48D;
+    color: #1C395E;
+    border-radius: 10px;
+    /*border: 3px solid #1C395E;*/
+}
+
+.type {
+    background: #1C395E;
+    color: #ffffff;
+    border-radius: 10px;
+}
+.btn {
+    background: #1C395E;
+    color: #ffffff;
+    border-radius: 10px;
+    width:100%;
+   
+}
+    .btn:hover {
+        border: 2px solid #1C395E;
+        background-color: #A2D48D;
+        color: #1C395E;
+    }
+
+#checkbox {
+    border: 2px solid #1C395E ;
+   
+}
+
+.card {
+    border: 0;
+    box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+.trash {
+    font-size: 1vw;
+    color: #1C395E;
+}
+    .trash:hover {
+        color:#1C395E;
+        
+    }
+
+.shopping {
+    color: #1C395E;
+}
+.shopping:hover{
+    color:#1C395E;
+}
+
+

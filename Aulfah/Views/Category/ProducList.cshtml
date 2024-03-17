@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Product> 
+{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="HomeContent">
+
+    <h1 class="text-center">Ccccccccc</h1>
+
+    <div class=" m-4 d-flex justify-content-center">
+        @if (Model != null)
+        {
+
+            @foreach (var item in Model)
+            {
+
+             //   @foreach (var item in category.Products)
+                //{
+                    <div class="card mb-1  m-2 " style="width: 15rem;">
+                        <a href="/Product/Details?id=@item.ProductId">
+                            @if (string.IsNullOrEmpty(@item.ProductImage))
+                            {
+                                <i class="bi bi-person-circle iconAccount"></i>
+                            }
+                            else
+                            {
+                                <img src="~/Files/Images/@item.ProductImage" class="card-img-top" alt="Product Name" />
+                            }
+
+                            <div class="card-body">
+                                <h5 class="card-title">@item.ProductName</h5>
+                                <p class="card-text">@item.Description</p>
+
+                            </div>
+                        </a>
+                    </div>
+              //  }
+            }
+        }
+        </div>
+        </div>

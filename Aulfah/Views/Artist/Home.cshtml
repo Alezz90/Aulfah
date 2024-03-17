@@ -1,0 +1,206 @@
+﻿@* @model ApplicationUser *@
+@model IEnumerable<ApplicationUser>
+@{
+    // var artistProduct = ViewBag.ArtistProduct;
+    var artistProduct = ViewBag.ArtistProduct as IEnumerable<ApplicationUser>;
+   // var artistServices = ViewBag.ArtistServices;
+
+    //var ArtistEarning = ViewBag.ArtistEarning;
+
+    // var artistServicesObjectCoubt = ViewBag.ArtistServicesObjectCoubt;
+
+}
+
+
+
+
+<div class="container">
+    <!-- =============== Navigation ================ -->
+    <!-- <div class="navigation">
+        <ul>
+            <li>
+                <a asp-action="Details">
+
+                    <span class="icon" id="Artist-Pic">
+    @* @if (string.IsNullOrEmpty(@Model.UserImage)) *@
+                        {
+                            <i class="bi bi-person-circle iconAccount"></i>
+                        }
+                        else
+                        {
+    @* <img src="~/Image/ArtistPic/@Model.UserImage" alt="@Model.Fname" /> *@
+                        }
+
+                    </span>
+    @* <span class="title">@Model.FName +" "+ @Model.LName <br><span class="artistEmail">@Model.Email </span></span> *@
+                </a>
+            </li>
+
+            <li>
+                <a asp-action="Home">
+                    <span class="icon"> <i class="fa-solid fa-table-columns"></i></span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-action="Home">
+                    <span class="icon"> <i class="fa-solid fa-user"></i> </span>
+                    <span class="title">Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-action="Home">
+                    <span class="icon"> <i class="fa-solid fa-sort"></i> </span>
+                    <span class="title">Orders</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-action="Home">
+                    <span class="icon"> <i class="fa-solid fa-message"></i> </span>
+                    <span class="title">Messages</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-action="Home">
+                    <span class="icon"> <i class="fa-solid fa-sitemap"></i> </span>
+                    <span class="title">Product</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-action="Home">
+                    <span class="icon"> <i class="fa-solid fa-headset"></i> </span>
+                    <span class="title">Support</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-action="Home">
+                    <span class="icon"> <i class="fa-solid fa-arrow-right-from-bracket"></i> </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+    </div> -->
+    <!-- ========================= Main ==================== -->
+    <!-- ======================= Cards ================== -->
+    <div class="cardBox">
+        <div class="card">
+            <div class="cardComtainer">
+                <div class="cardName">Earning</div>
+                <div class="numbers">@* $ ArtistEarning *@</div>
+            </div>
+
+            <div class="iconBx">
+                <i class="fa-solid fa-money-check"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="cardComtainer">
+                <div class="cardName">Sales</div>
+                <div class="numbers">@* @artistServicesObjectCoubt *@ </div>
+            </div>
+
+            <div class="iconBx">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================ Services Details List ================= -->
+    <div class="details">
+        <div class="recentServices">
+            <div class="cardHeader">
+                <h2>Recent Services</h2>
+                @* Edit this later *@
+                @* <a href="#" class="btn">View All</a> *@
+            </div>
+          @*  @if (Model != null && Model.Any()) { *@
+           @foreach (var user in Model){
+                @if (user.Services != null && user.Services.Any())
+                        {
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Description</td>
+                                <td>Price</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in user.Services)
+                            {
+                                <tbody>
+
+
+                                    <tr>
+                                        <td>@item.Description</td>
+                                        <td>@item.Price</td>
+                                        <td>@item.Status</td>
+
+                                        @* <td><span class="status delivered"></span></td> *@
+                                    </tr>
+                                    }
+                                </tbody>
+                                }
+                                </table>
+                            }           
+            else
+            {
+                <h2>  No Services Available </h2>
+            }
+            }
+        </div>
+
+        <!-- ================= My Product ================ -->
+        <div class="recentProduct">
+            <div class="cardHeader">
+                <h2>Recent Product</h2>
+            </div>
+            @if (artistProduct != null && artistProduct.Count() > 0)
+            {
+            <table>
+                    <thead>
+                        <tr>
+                            <td>Product Name</td>
+                            <td>Quantity</td>
+                            <td>Product Price</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var artist in artistProduct)
+                        {
+                            foreach (var product in artist.Products)
+                            {
+                            <tr>
+                                <td width="60px">
+                                    @* ProductPic *@
+                                    <div class="imgBx">
+                                            <img src="~/Image/ProductPic/@product.ProductImage" alt="@product.ProductName" />
+                                    </div>
+                                </td>
+                                <td>
+                                        <h4>@product.ProductName  <span>@product.Quantity</span> $ @product.ProductPrice</h4>
+                                </td>
+                            </tr>
+                        }
+                        }
+                    </tbody> 
+
+                </table>
+            }
+            else
+            {
+                <h2>  No Products Available </h2>
+            } 
+        </div>
+    </div>
+</div>
+</div>
+
