@@ -16,17 +16,17 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userFirstName</a>
+            <a id="manage" class="nav-link" style="color:#A2D48D;" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userFirstName</a>
         </li>
     
 }
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link" style="color:#A2D48D;" id="register" asp-area="Identity" asp-page="/Account/Register">Register/ </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link" style="color:#A2D48D; id="login" asp-area="Identity" asp-page="/Account/Login"> Login</a>
     </li>
 }
 </ul>

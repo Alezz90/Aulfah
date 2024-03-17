@@ -8,7 +8,7 @@
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     display:flex;
     flex-wrap:nowrap;
     bottom: 0;
@@ -29,7 +29,7 @@ footer {
     }
 
 .content {
-    min-height: calc(100vh - 100px); /* Adjust the value (100px) based on the height of your footer */
+    min-height: calc(100vh - 100px); 
 }
 
 

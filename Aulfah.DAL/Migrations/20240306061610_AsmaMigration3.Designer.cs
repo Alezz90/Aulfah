@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240304040536_create database")]
-    partial class createdatabase
+    [Migration("20240306061610_AsmaMigration3")]
+    partial class AsmaMigration3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

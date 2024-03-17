@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Aulfah.DAL.Migrations
 {
-    public partial class createdatabase : Migration
+    public partial class AsmaMigration3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

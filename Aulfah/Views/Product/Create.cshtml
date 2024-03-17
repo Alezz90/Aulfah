@@ -4,9 +4,16 @@
    
    // var Category = new SelectList(ViewBag.Category, "CategoryID", "Name");
 }
-<h3 class="text-center m-2"> Add Product </h3>
-<div class="card p-4 m-2 border-3 border-dark rounded">
+<div class="mt-3">
+    <a asp-action="Home" asp-controller="Artist" class="text-decoration-none ">
+        <i class="fa-solid fa-arrow-left" style="color:#1C395E;"></i>
+    </a>
+</div>
+<h1 class="text-center  mb-5 "> Add Product </h1>
+
+<div class="card p-4 m-2 border shadow-none">
     <h4 class="text-center"> Product Details</h4>
+
 <form asp-action="Create" enctype="multipart/form-data" >
     <div asp-validation-summary="All"></div>
    
@@ -14,37 +21,39 @@
         <div class="col">
 
     <label asp-for="ProductName" class="form-label"></label>
-                <input asp-for="ProductName" class="form-control border-1 border-dark rounded" />
+                <input asp-for="ProductName" class="form-control" />
     <span asp-validation-for="ProductName" class="text-danger"></span>
     <br />
     <label asp-for="ProductPrice" class="form-label"></label>
-                <input asp-for="ProductPrice" class="form-control border-1 border-dark rounded" id="Datestart" />
+                <input asp-for="ProductPrice" class="form-control " id="Datestart" />
     <span asp-validation-for="ProductPrice" class="text-danger"></span>
     <br />
     </div>
         <div class="col">
     <label asp-for="Size" class="form-label"></label>
-                <input asp-for="Size" class="form-control border-1 border-dark rounded" id="Datestart" />
+                <input asp-for="Size" class="form-control " id="Datestart" />
     <span asp-validation-for="Size" class="text-danger"></span>
     <br />
                 <label asp-for="Size" class="form-label"></label>
-                <input asp-for="Size" class="form-control border-1 border-dark rounded" id="Datestart" />
+                <input asp-for="Size" class="form-control" id="Datestart" />
                 <span asp-validation-for="Size" class="text-danger"></span>
                 <br />
          
             </div>
             </div>
     <div class="row">
+    <div class="col">
     <label asp-for="Description" class="form-label"></label>
-            <input asp-for="Description" class="form-control border-1 border-dark rounded" id="Datestart" />
+            <input asp-for="Description" class="form-control" id="Datestart" />
     <span asp-validation-for="Description" class="text-danger"></span>
     <br />
-    <!--                        story i can not foun it im Model -->
+            </div>
+    <!-- story i can not foun it im Model -->
         </div>
     <div class="row">
             <div class="col">
                 <label asp-for="category" class="form-label"></label>
-                <select class="form-control border-1 border-dark rounded" asp-for="CategoryID" asp-items="@Category">
+                <select class="form-control" asp-for="CategoryID" asp-items="@Category">
                     <option value="@null">--Select CategoryID--</option>
 
                 </select>
@@ -52,14 +61,15 @@
             </div>
         </div>
         <div class="row">
+        <div class="col">
     <label asp-for="ProductImage" class="form-label"></label>
-    <input asp-for="ProductPath " class="form-control border-1 border-dark rounded" id="" />
+    <input asp-for="ProductPath " class="form-control "  />
     <br />
+            </div>
     </div>
 
-
-        <input type="submit" class="btn buttonDark m-2 " value="Add" />
-    <a asp-action="Index" class="btn btn-dark"> Back to List</a>
+        <input type="submit" class="btn buttonDark mt-4" value="Add" />
+    <!--<a asp-action="Index" class="btn btn-dark"> Back to List</a>-->
     <br />
 </form>
 </div>

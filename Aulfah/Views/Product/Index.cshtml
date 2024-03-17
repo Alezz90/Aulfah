@@ -1,6 +1,14 @@
 ﻿@model List<Product>
 
 
+    <div class="container">
+
+<div class=" d-flex justify-content-between mt-4">
+        <a asp-action="Home" asp-controller="Artist" class="text-decoration-none " style="color:#1C395E"> <i class="fa-solid fa-arrow-left" style="color:#1C395E"></i></a>
+        <a asp-action="Create" asp-controller="Product" class="text-decoration-none " style="color:#1C395E" > <i class="fa-solid fa-circle-plus" style="color:#1C395E"></i> Add Product</a>
+
+
+</div>
 <div class="row row-cols-1 row-cols-3 g-3 mt-3 d-flex flex-wrap">
  @*    @foreach (var item in Model)
     {
@@ -11,7 +19,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between pb-3">
                 <h5 class="card-title">@item.ProductName</h5>
-                <h5 class="card-title">Price: @item.ProductPrice</h5>
+                <h6 class="card-title">Price: @item.ProductPrice</h6>
                 </div>
                 <p class="card-text">@item.Description</p>
             
@@ -25,13 +33,15 @@
         </div>
     </div>  
     } *@
+
+     
     <div class="col-4">
         <div class="card p-2 mx-auto">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="d-flex justify-content-between pb-3">
                     <h5 class="card-title">Product Name</h5>
-                    <h5 class="card-title">Price: 30 OMR</h5>
+                    <h6 class="card-title">Price: 30 OMR</h6>
                 </div>
                 <p class="card-text">Description Description Description Description Description Description Description Description </p>
 
@@ -52,7 +62,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between pb-3">
                     <h5 class="card-title">Product Name</h5>
-                    <h5 class="card-title">Price: 30 OMR</h5>
+                    <h6 class="card-title">Price: 30 OMR</h6>
                 </div>
                 <p class="card-text">Description Description Description Description Description Description Description Description </p>
 
@@ -72,7 +82,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between pb-3">
                     <h5 class="card-title">Product Name</h5>
-                    <h5 class="card-title">Price: 30 OMR</h5>
+                    <h6 class="card-title">Price: 30 OMR</h6>
                 </div>
                 <p class="card-text">Description Description Description Description Description Description Description Description </p>
 
@@ -92,7 +102,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between pb-3">
                     <h5 class="card-title">Product Name</h5>
-                    <h5 class="card-title">Price: 30 OMR</h5>
+                    <h6 class="card-title">Price: 30 OMR</h6>
                 </div>
                 <p class="card-text">Description Description Description Description Description Description Description Description </p>
 
@@ -106,14 +116,11 @@
             </div>
         </div>
     </div>
-    <div class="col-4 ">
-        <a asp-action="Create" asp-controller="Product" class="btn w-50"> <i class="fa-solid fa-circle-plus" style="color:#A2D48D"></i> Add Product</a>
-
-    </div>
+   
       
 
 
 </div>
-
+</div>
 
    

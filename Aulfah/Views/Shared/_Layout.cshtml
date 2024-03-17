@@ -34,7 +34,7 @@
 
             </div>
            
-            <div class="dropdown linkcolor" >
+            <div class="dropdown linkcolor " >
                 <a class="link dropdown-toggle mx-3 text-decoration-none" href="#" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-three-dots iconNav "></i>
                 </a>
@@ -48,14 +48,17 @@
                             </a>
                         </li>
                     }
-                    else if (User.IsInRole(SD.Role_Customer))
-
+                    else
                     {
                         <li>
                             <a asp-action="Index" asp-controller="Home" class="dropdown-item  rounded text-decoration-none">
                                 <i class="fa-solid fa-house mx-1" style="color: #1C395E ;"></i> Home
                             </a>
                         </li>
+                    }
+                    @if (User.IsInRole(SD.Role_Customer))
+
+                    {
                         <li>
                             <a asp-action="Index" asp-controller="Cart" class="dropdown-item  rounded text-decoration-none">
                                 Orders
@@ -64,44 +67,22 @@
 
                     }
                     <li>
-                        <a asp-action="Index" asp-controller="Cart" class="dropdown-item rounded text-decoration-none">
+                        <a asp-action="About" asp-controller="Home" class="dropdown-item rounded text-decoration-none">
                             <i class="fa-solid fa-circle-info mx-1" style="color: #1C395E ;"></i>About Aulfah
                         </a>
                     </li>
                     <li>
-                        <hr class="dropdown-divider">
+                        <hr class="dropdown-divider" >
                     </li>
 
                     @if (User.IsInRole(SD.Role_Customer))
                     {
-                        <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-item dropdown-toggle rounded text-decoration-none">
-                                <i class="fa-solid fa-shapes mx-1" style="color: #1C395E;"></i>Categories
+                        <li>
+                            <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
+                                <i class="fa-solid fa-shapes mx-1" style="color: #1C395E ;"></i>Categories
                             </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
-                                        All Categories
-                                    </a>
-                                </li>
-                                <li>
-                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
-                                        Category 1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
-                                        Category 2
-                                    </a>
-                                </li>
-                                <li>
-                                    <a asp-action="Index" asp-controller="Category" class="dropdown-item rounded text-decoration-none">
-                                        Category 3
-                                    </a>
-                                </li>
-                            </ul>
-
                         </li>
+
                     }
 
                     <li>
@@ -146,23 +127,26 @@
                             {
 
                                 <li>
-                                    <a asp-action="Profile" asp-controller="Customer" class="dropdown-item rounded text-decoration-none">
+                                    <a asp-action="Profile" asp-controller="Artist" class="dropdown-item rounded text-decoration-none">
                                 <i class="fa-solid fa-user mx-1" style="color: #1C395E;"></i>Profile
                                     </a>
                                 </li>
                             }
                             <li>
-                                <a href="#" class="dropdown-item rounded text-decoration-none">
+                                <a asp-action="Setting" asp-controller="Artist" class="dropdown-item rounded text-decoration-none">
                             <i class="fa-solid fa-gear mx-1" style="color: #1C395E;"></i>Settings
                                 </a>
                             </li>
+                             @if (User.IsInRole(SD.Role_Customer) || User.IsInRole(SD.Role_Artist))
+                           {
 
                             <li>
-                                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <input id="logout" type="submit" class="input-group-text border-0" value="Logout" style="background: #A2D48D ; color:#1C395E;" />
-                                </form>
+                               <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <input id="logout" type="submit" class="input-group-text border-0 mx-3" value="Logout" style="background: #A2D48D ; color:#1C395E;" />
+                               </form>
                             </li>
-                       
+                           }
+
 
                 </ul>
 
@@ -202,20 +186,7 @@
                     <li class="nav-item mx-auto my-auto">
                         <partial name="_LoginPartial" />
                     </li>
-                   <!-- testing product view-->
-                 @*    <li class="nav-item mx-auto my-auto">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Create">
-                            createproduct</i>
-                        </a>
-                    </li>
-                    <!--end test-->
-                    <!-- testing category view-->
-                    <li class="nav-item mx-auto my-auto text-light">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">
-                            Category </i>
-                        </a>
-                    </li> *@
-                    <!--end test-->
+                   
                 </ul>
              
             </div>
@@ -328,7 +299,7 @@
             </ul>
         </nav>
     </div>*@
-    <div class="container">
+    <div class="container pb-3">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -336,7 +307,7 @@
     
     <footer class="d-flex flex-wrap" id="footer">
 
-        <div class="footerContant">
+        <div class="footerContant ">
             <div class="iconSocial">
                 <a href="https://www.linkedin.com/in/shaima-alariemi-3a7a70228/">
                     <i class="fa-brands fa-linkedin"></i>

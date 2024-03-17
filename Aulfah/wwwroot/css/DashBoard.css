@@ -303,7 +303,7 @@ body {
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: 1fr 0fr;
 }
 
 .recentServices {
@@ -314,8 +314,8 @@ body {
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    width: 85%;
-    margin-left: 60px;
+    width: 45%;
+    margin-left: 10px;
 }
 
 .recentProduct {
@@ -326,21 +326,11 @@ body {
     background: #fff;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    width: 80%;
+    width: 45%;
     margin-right: 10px;
 }
 
-/*    .details .recentProduct {
-        position: relative;
-        display: grid;
-        min-height: 500px;
-        background: #fff;
-        padding: 20px;
-        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-        border-radius: 20px;
-        width: 100%;
-        margin-left: 40px;
-    }*/
+
 
 .details .cardHeader {
     display: flex;
