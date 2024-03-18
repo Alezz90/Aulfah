@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Aulfah.DAL.Model;
 using Aulfah.Models;
+using Aulfah.PL.Helper;
 using Aulfah.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -87,7 +88,9 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account.Manage
             public DateTime? DateOfBirth { get; set; }
             public string? Goverment { get; set; }
             public string? State { get; set; }
-
+            //Image
+            public string? UserImage { get; set; }
+            public IFormFile UserPath { get; set; }
             public string? Skills { get; set; }
             public string? Courses { get; set; }
             public string? SocialMedia { get; set; }
@@ -124,7 +127,7 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account.Manage
                         Text = i,
                         Value = i
                     }).ToList()
-            };
+        };
 
             /* If The user Logged In is Artist Only */
             /* Assign The Value Of These Attributes */
@@ -200,6 +203,7 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account.Manage
                 user.PhoneNumber = Input.PhoneNumber;
                 user.Goverment = Input.Goverment;
                 user.State = Input.State;
+                user.UserImage = DucomentConfi.DocumentUplod(Input.UserPath, "ArtistPic");
 
             /* If The user Logged In is Artist Only */
             /* Update The Value Of These Attributes */

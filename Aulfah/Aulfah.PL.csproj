@@ -29,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\Files\ArtistPic\" />
+    <Folder Include="wwwroot\Files\CustomerPic\" />
     <Folder Include="wwwroot\Image\CustomerPic\" />
     <Folder Include="wwwroot\Image\ProductPic\" />
   </ItemGroup>
