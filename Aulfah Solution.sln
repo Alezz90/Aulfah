@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aulfah.BLL", "Aulfah.BLL\Au
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aulfah.DAL", "Aulfah.DAL\Aulfah.DAL.csproj", "{B734DE3E-C745-415B-8B0A-E46E5CAEEB7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aulfah.Utility", "Aulfah.Utility\Aulfah.Utility.csproj", "{50749AF0-B687-4366-9DE9-869A518EE353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aulfah.Utility", "Aulfah.Utility\Aulfah.Utility.csproj", "{50749AF0-B687-4366-9DE9-869A518EE353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

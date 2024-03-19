@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Aulfah.DAL.Migrations
 {
-    public partial class createdatabase : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -124,7 +124,7 @@ namespace Aulfah.DAL.Migrations
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     State = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Goverment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: true),
                     CardDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SecurityKey = table.Column<int>(type: "int", nullable: true),
                     CardNum = table.Column<int>(type: "int", nullable: true),
@@ -134,7 +134,6 @@ namespace Aulfah.DAL.Migrations
                     Courses = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     socialMedia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ServicesType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CartId = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -157,8 +156,7 @@ namespace Aulfah.DAL.Migrations
                         name: "FK_AspNetUsers_Cart_CartId",
                         column: x => x.CartId,
                         principalTable: "Cart",
-                        principalColumn: "CartId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CartId");
                 });
 
             migrationBuilder.CreateTable(
@@ -173,7 +171,7 @@ namespace Aulfah.DAL.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Size = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: true),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryID = table.Column<int>(type: "int", nullable: true),
                     CartId = table.Column<int>(type: "int", nullable: true)
                 },

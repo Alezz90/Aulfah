@@ -4,6 +4,7 @@ using Aulfah.DataContex;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240311084432_First")]
+    partial class First
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,6 +66,9 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CardNum")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CartId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -554,9 +559,6 @@ namespace Aulfah.DAL.Migrations
                 {
                     b.HasBaseType("Aulfah.DAL.Model.ApplicationUser");
 
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
-
                     b.HasIndex("CartId")
                         .IsUnique()
                         .HasFilter("[CartId] IS NOT NULL");
@@ -723,9 +725,7 @@ namespace Aulfah.DAL.Migrations
                 {
                     b.HasOne("Aulfah.Models.Cart", "Cart")
                         .WithOne("Customers")
-                        .HasForeignKey("Aulfah.Models.Customer", "CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Aulfah.Models.Customer", "CartId");
 
                     b.Navigation("Cart");
                 });

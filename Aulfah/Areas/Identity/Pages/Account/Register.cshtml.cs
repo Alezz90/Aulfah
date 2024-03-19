@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Aulfah.PL.Areas.Identity.Pages.Account
@@ -38,6 +39,7 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUnitofWork _unitofWork;
   
 
         public RegisterModel(
@@ -46,7 +48,8 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender
+            IEmailSender emailSender,
+            IUnitofWork unitofWork
         )
         {
             _roleInManager = roleManager;
@@ -56,6 +59,7 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _unitofWork = unitofWork;
             
         }
 
@@ -129,7 +133,6 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
             {
                 _roleInManager.CreateAsync(new IdentityRole(SD.Role_Customer)).GetAwaiter().GetResult();
                 _roleInManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
-                _roleInManager.CreateAsync(new IdentityRole(SD.Role_Company)).GetAwaiter().GetResult();
                 _roleInManager.CreateAsync(new IdentityRole(SD.Role_Artist)).GetAwaiter().GetResult();
             }
 
@@ -159,16 +162,32 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser(Input.Role);
+               
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.FName= Input.Fname;
                 user.LName = Input.Lname;
                 //why we dont mensition email
+                /* IdentityUser already has an Email Attribute */
                // user.Email = Input.Email;
                 user.dateOfBirth= Input.DateOfBirth;
                 user.PhoneNumber = Input.PhoneNumber;
 
+                // Assigning Cart ID To Customer
+                if (Input.Role == SD.Role_Customer && user is Customer customer)
+                {
+                    Cart cart;
+                    cart = CreateCart();
+
+                    // Add the newCart object to the context
+                    _unitofWork.CartRepository.Create(cart);
+
+                    customer.CartId = cart.CartId;
+
+                }
+
+                // Storing the New User In DB
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
@@ -210,10 +229,7 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
                         // Redirect based on role
                         if (roles.Contains(SD.Role_Artist))
                         {
-
-
                             return RedirectToAction("Home", "Artist");
-                            
                         }
                         else if (roles.Contains(SD.Role_Customer))
                         {
@@ -299,6 +315,21 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
+
+        private Cart CreateCart()
+        {
+            try
+            {
+                return Activator.CreateInstance<Cart>();
+            }
+            catch
+            {
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(ApplicationUser)}'. " +
+                    $"Ensure that '{nameof(ApplicationUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
+            }
+        }
+
 
         private IUserEmailStore<ApplicationUser> GetEmailStore()
         {

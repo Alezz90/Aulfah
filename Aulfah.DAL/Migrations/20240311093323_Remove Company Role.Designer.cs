@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240303103604_data typr for pId")]
-    partial class datatyprforpId
+    [Migration("20240311093323_Remove Company Role")]
+    partial class RemoveCompanyRole
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -112,9 +112,6 @@ namespace Aulfah.DAL.Migrations
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");

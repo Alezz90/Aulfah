@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240303044651_create database")]
-    partial class createdatabase
+    [Migration("20240311090214_CartID")]
+    partial class CartID
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -112,9 +112,6 @@ namespace Aulfah.DAL.Migrations
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -288,8 +285,8 @@ namespace Aulfah.DAL.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductImage")
                         .HasColumnType("nvarchar(max)");
