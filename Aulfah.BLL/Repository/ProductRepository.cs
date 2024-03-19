@@ -29,5 +29,13 @@ namespace Aulfah.DAL.Repositories
          
             return prod;
         }
+
+        public IEnumerable<Product> UserProduct(string Userid)
+        {
+
+            var prod = _context.Product.Where(e => e.Id== Userid).ToList();
+
+            return prod;
+        }
     }
 }

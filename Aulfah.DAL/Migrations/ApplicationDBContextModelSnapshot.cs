@@ -219,7 +219,6 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ServiceID")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("ShipmentID")
@@ -321,12 +320,12 @@ namespace Aulfah.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("OrdersID")
-                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -335,8 +334,6 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ServiceID");
-
-                    b.HasIndex("OrdersID");
 
                     b.ToTable("Services");
                 });
@@ -610,9 +607,7 @@ namespace Aulfah.DAL.Migrations
 
                     b.HasOne("Aulfah.Models.Service", "Service")
                         .WithMany()
-                        .HasForeignKey("ServiceID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiceID");
 
                     b.HasOne("Aulfah.Models.Shipment", "Shipment")
                         .WithMany("Orders")
@@ -642,15 +637,6 @@ namespace Aulfah.DAL.Migrations
                     b.HasOne("Aulfah.Models.Cart", null)
                         .WithMany("Products")
                         .HasForeignKey("CartId");
-                });
-
-            modelBuilder.Entity("Aulfah.Models.Service", b =>
-                {
-                    b.HasOne("Aulfah.Models.Orders", "Orders")
-                        .WithMany()
-                        .HasForeignKey("OrdersID");
-
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("CategoryProduct", b =>

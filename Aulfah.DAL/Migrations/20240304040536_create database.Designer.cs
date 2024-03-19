@@ -12,8 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240311093323_Remove Company Role")]
-    partial class RemoveCompanyRole
+<<<<<<<< HEAD:Aulfah.DAL/Migrations/20240311090214_CartID.Designer.cs
+    [Migration("20240311090214_CartID")]
+    partial class CartID
+========
+    [Migration("20240304040536_create database")]
+    partial class createdatabase
+>>>>>>>> 5b7dd95b65e1a70438b449a6ffd46cad6454f787:Aulfah.DAL/Migrations/20240304040536_create database.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,7 +226,6 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ServiceID")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("ShipmentID")
@@ -323,12 +327,12 @@ namespace Aulfah.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("OrdersID")
-                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -337,8 +341,6 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ServiceID");
-
-                    b.HasIndex("OrdersID");
 
                     b.ToTable("Services");
                 });
@@ -612,9 +614,7 @@ namespace Aulfah.DAL.Migrations
 
                     b.HasOne("Aulfah.Models.Service", "Service")
                         .WithMany()
-                        .HasForeignKey("ServiceID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiceID");
 
                     b.HasOne("Aulfah.Models.Shipment", "Shipment")
                         .WithMany("Orders")
@@ -644,15 +644,6 @@ namespace Aulfah.DAL.Migrations
                     b.HasOne("Aulfah.Models.Cart", null)
                         .WithMany("Products")
                         .HasForeignKey("CartId");
-                });
-
-            modelBuilder.Entity("Aulfah.Models.Service", b =>
-                {
-                    b.HasOne("Aulfah.Models.Orders", "Orders")
-                        .WithMany()
-                        .HasForeignKey("OrdersID");
-
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("CategoryProduct", b =>

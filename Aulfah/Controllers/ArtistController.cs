@@ -40,41 +40,38 @@ namespace Aulfah.PL.Controllers
             {
                 return BadRequest();
             }
+            // i want to cheack the user login id delete it after
+            ViewBag.Artist = artist; 
+            
+           var ArtistServices = _unitofWork.ArtistRepository.userservice(artist);
+           
 
             //Retriving All Prudect Add By Artist
-            ViewBag.ArtistProduct = _unitofWork.ArtistRepository.userProduct(artist);
-            //_unitofWork.ProductRepository
-            // .GetAll();
-            // .Contains(artist => artist.id).ToList();******************
-            // .Where(o => o.Id == artist.Id).ToList();
+            ViewBag.ArtistProduct = _unitofWork.ProductRepository.UserProduct(artist);
+            ViewBag.ArtistService = _unitofWork.ServiceRepository.UserServices(artist);
 
-            //Retriving All Services Add By Artist
             //if (artist != null) 
-            //{
-            var ArtistServices = _unitofWork.ArtistRepository.userservice(artist);
-            //}
-
             /* Here I want to retrieve all products from the orders where at least 
                one product is sold by a specific artist, stroing them in a 
                single list of products from all the orders that meet the criteria. 
              */
 
-/*  var SaledProduct = _unitofWork.OrdersRepository.GetAll()
-      .Where(o => o.Cart.Products.Any(product => product.ArtistID == artist.ArtistID))
-      .SelectMany(o => o.Cart.Products).ToList();*************************/
+            /*  var SaledProduct = _unitofWork.OrdersRepository.GetAll()
+                  .Where(o => o.Cart.Products.Any(product => product.ArtistID == artist.ArtistID))
+                  .SelectMany(o => o.Cart.Products).ToList();*************************/
 
-/* Here I want to calculate the total price of the products,
-and store it in ViewBag I used totalPrice a static Method 
-developed in Product Class
- */
-// ViewBag.ArtistEarning = Product.totalPrice(SaledProduct);**********************
+            /* Here I want to calculate the total price of the products,
+            and store it in ViewBag I used totalPrice a static Method 
+            developed in Product Class
+             */
+            // ViewBag.ArtistEarning = Product.totalPrice(SaledProduct);**********************
 
-/* Here I want to set the count of the product,
-   to get the number of elements in the list
- */
-//ViewBag.ArtistServicesObjectCoubt = SaledProduct;*************************
+            /* Here I want to set the count of the product,
+               to get the number of elements in the list
+             */
+            //ViewBag.ArtistServicesObjectCoubt = SaledProduct;*************************
 
-return View(ArtistServices);
+            return View(ArtistServices);
         }
 
 

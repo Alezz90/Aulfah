@@ -2,8 +2,8 @@
 @model IEnumerable<ApplicationUser>
 @{
     // var artistProduct = ViewBag.ArtistProduct;
-    var artistProduct = ViewBag.ArtistProduct as IEnumerable<ApplicationUser>;
-   // var artistServices = ViewBag.ArtistServices;
+    var artistProduct = ViewBag.ArtistProduct as IEnumerable<Product>;
+    var artistService = ViewBag.ArtistService as IEnumerable<Service>;
 
     //var ArtistEarning = ViewBag.ArtistEarning;
 
@@ -13,7 +13,7 @@
 
 
 
-
+<h3>@ViewBag.Artist</h3>
 <div class="container">
     <!-- =============== Navigation ================ -->
     <!-- <div class="navigation">
@@ -121,45 +121,40 @@
                 @* Edit this later *@
                 @* <a href="#" class="btn">View All</a> *@
             </div>
-          @*  @if (Model != null && Model.Any()) { *@
-           @foreach (var user in Model){
-                @if (user.Services != null && user.Services.Any())
+            @if (artistService != null && artistService.Count() > 0)
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Description</td>
+                            <td>Price</td>
+                            <td>Status</td>
+                           
+
+                            @* <td><span class="status delivered"></span></td> *@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var service in artistService)
                         {
-                    <table>
-                        <thead>
                             <tr>
-                                <td>Description</td>
-                                <td>Price</td>
-                                <td>Status</td>
+                                <td>@service.Description</td>
+                                <td>@service.Price</td>
+                                <td>@service.Status</td>
                             </tr>
-                        </thead>
-
-                        @foreach (var item in user.Services)
-                            {
-                                <tbody>
-
-
-                                    <tr>
-                                        <td>@item.Description</td>
-                                        <td>@item.Price</td>
-                                        <td>@item.Status</td>
-
-                                        @* <td><span class="status delivered"></span></td> *@
-                                    </tr>
-                                    }
-                                </tbody>
-                                }
-                                </table>
-                            }           
+                        }
+                    </tbody>
+                </table>
+            }
             else
             {
-                <h2>  No Services Available </h2>
-            }
+                <h2>  No Products Available </h2>
             }
         </div>
-
+    </div>
         <!-- ================= My Product ================ -->
         <div class="recentProduct">
+        <div class="recentServices">
             <div class="cardHeader">
                 <h2>Recent Product</h2>
             </div>
@@ -174,15 +169,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var artist in artistProduct)
+                        @foreach (var product in artistProduct)
                         {
-                            foreach (var product in artist.Products)
-                            {
+                           // foreach (var product in artist.Products)
+                            //{
                             <tr>
                                 <td width="60px">
                                     @* ProductPic *@
                                     <div class="imgBx">
-                                            <img src="~/Image/ProductPic/@product.ProductImage" alt="@product.ProductName" />
+                                        <img src="~/Files/Images/@product.ProductImage" alt="@product.ProductName" />
                                     </div>
                                 </td>
                                 <td>
@@ -190,7 +185,7 @@
                                 </td>
                             </tr>
                         }
-                        }
+                        
                     </tbody> 
 
                 </table>
