@@ -168,9 +168,12 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.FName= Input.Fname;
                 user.LName = Input.Lname;
+<<<<<<< HEAD
+=======
                 //why we dont mensition email
                 /* IdentityUser already has an Email Attribute */
                // user.Email = Input.Email;
+>>>>>>> 69fef9893dae2d27943e22172ea9e8d4cdf0a8f5
                 user.dateOfBirth= Input.DateOfBirth;
                 user.PhoneNumber = Input.PhoneNumber;
 
@@ -197,7 +200,6 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
                     if (!String.IsNullOrEmpty(Input.Role))
                     {
                         await _userManager.AddToRoleAsync(user, Input.Role);
-                        //await _roleInManager.AddClaimAsync(Input.Role);
 
                     }
                     else

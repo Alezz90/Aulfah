@@ -82,13 +82,13 @@ namespace Aulfah.PL.Controllers
 
             return View(emps);
         }
-        public IActionResult Details(int? id)
+        public IActionResult Details(string? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            var emp = _unitofWork.ArtistRepository.Get(id.Value);
+            var emp = _unitofWork.ArtistRepository.Get(id);
             return View(emp);
 
         }
@@ -115,7 +115,7 @@ namespace Aulfah.PL.Controllers
         }
         
         // Update Artist
-        public IActionResult Update(int id)
+        public IActionResult Update(string id)
         {
             var artist = _unitofWork.ArtistRepository.Get(id);
             return View(artist);
@@ -133,14 +133,14 @@ namespace Aulfah.PL.Controllers
         }
 
         //Deleting Artist Account
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             var artist = _unitofWork.ArtistRepository.Get(id);
             return View(artist);
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirm(int id)
+        public IActionResult DeleteConfirm(string id)
         {
             var artist = _unitofWork.ArtistRepository.Get(id);
 

@@ -19,7 +19,7 @@ namespace Aulfah.PL.Controllers
 
       
 
-        public IActionResult Index(int id)
+        public IActionResult Index(string id)
         {
             //Getting customer using the ID passed 
             var customerCart = _unitofWork.CustomerRepository.Get(id);
@@ -83,7 +83,7 @@ namespace Aulfah.PL.Controllers
         }
 
         
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             var product = _unitofWork.CartRepository.Get(id);
             _unitofWork.CartRepository.Delete(product);

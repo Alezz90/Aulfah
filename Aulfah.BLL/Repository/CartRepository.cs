@@ -1,6 +1,7 @@
 ﻿using Aulfah.BLL.Interfaces;
 using Aulfah.DataContex;
 using Aulfah.Models;
+using System.Xml.Linq;
 
 
 namespace Aulfah.DAL.Repositories
@@ -14,6 +15,12 @@ namespace Aulfah.DAL.Repositories
             _context = context;
         }
 
-       
+        public IEnumerable<Cart> CustomerCart(string Userid)
+        {
+         
+            var custCart = _context.Cart.Where(e => e.CartId == Userid).ToList();
+
+            return custCart;
+        }
     }
 }

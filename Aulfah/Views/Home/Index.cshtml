@@ -18,15 +18,19 @@
             {
               <div class="card mb-1  m-2 " style="width: 15rem;">
                 <a href="/Product/Details?id=@item.ProductId">
-            @if (string.IsNullOrEmpty(@item.ProductImage))
-            {
-                <i class="bi bi-person-circle iconAccount"></i>
-            }
-            else
-            {
-                <img src="~/Files/Images/@item.ProductImage" class="card-img-top" alt="Product Name" />
-            }
-        
+                 
+                            @if(item.Images != null && item.Images.Any())
+    
+                            {
+                        <img src="~/Files/Images/@item.Images.FirstOrDefault()?.ImageName" class="card-img-top" alt="Product Name" />
+
+                            }
+                            else
+                            {
+
+                                <i class="bi bi-person-circle iconAccount"></i>
+
+                            }
         <div class="card-body">
             <h5 class="card-title">@item.ProductName</h5>
                 <p class="card-text">@item.Description</p>

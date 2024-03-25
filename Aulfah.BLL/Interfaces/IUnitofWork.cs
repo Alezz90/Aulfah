@@ -18,5 +18,7 @@ namespace Aulfah.BLL.Interfaces
         public IShipmentRepository ShipmentRepository { get; set; }
         public ITrackRepository TrackRepository { get; set; }
         public ICategoryRepository  CategoryRepository{ get; set; }
+         
+        public IProductImageRepository ProductImageRepository { get; set; }
     }
 }

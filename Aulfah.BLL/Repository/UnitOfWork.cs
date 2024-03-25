@@ -25,9 +25,11 @@ namespace Aulfah.DAL
             ShipmentRepository = new ShipmentRepository(_context);
             TrackRepository = new TrackRepository(_context);
             CategoryRepository = new CategoryRepository(_context);
+            ProductImageRepository = new ProductImageRepository(_context);
         }
 
         public IArtistRepository ArtistRepository { get; set; }
+        public IProductImageRepository ProductImageRepository { get; set; }
         public ICartRepository CartRepository { get; set; }
         public ICustomerRepository CustomerRepository { get; set; }
         public IOrdersRepository OrdersRepository { get; set; }

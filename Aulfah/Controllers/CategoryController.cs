@@ -48,13 +48,13 @@ namespace Aulfah.PL.Controllers
             return View(products);
 
         }*/
-        public IActionResult Details(int? id)
+        public IActionResult Details(string? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            var products = _unitofWork.CategoryRepository.Get(id.Value);
+            var products = _unitofWork.CategoryRepository.Get(id);
             return View(products);
 
         }
@@ -76,7 +76,7 @@ namespace Aulfah.PL.Controllers
         }
 
         [Authorize(Roles = SD.Role_Admin)]
-        public IActionResult Update(int id)
+        public IActionResult Update(string id)
         {
             var dep = _unitofWork.CategoryRepository.Get(id);
             return View(dep);
@@ -93,7 +93,7 @@ namespace Aulfah.PL.Controllers
             return View(category);
         }
         [Authorize(Roles = SD.Role_Admin)]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             var category = _unitofWork.CategoryRepository.Get(id);
             _unitofWork.CategoryRepository.Delete(category);

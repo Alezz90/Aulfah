@@ -6,17 +6,16 @@
     </div>
     <div class="row border-5 shadow-lg p-3 mb-5 bg-white rounded m-3">
         <div class="d-flex col-2 m-3 p-4">
+
             @* Loop the picture  *@
             <div class="flex-column">
-                <div class="shadow-lg p-3 mb-5 bg-white rounded">
-                    <img src="~/files/images/@Model.ProductImage" width="150px" />
-                </div>
-                <div class="shadow-lg p-3 mb-5 bg-white rounded">
-                    <img src="~/files/images/@Model.ProductImage" width="150px" />
-                </div>
-                <div class="shadow-lg p-3 mb-5 bg-white rounded">
-                    <img src="~/files/images/@Model.ProductImage" width="150px" />
-                </div>
+                @foreach (var item in Model.Images)
+                {
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                        <img src="~/files/images/@item.ProductImages" width="150px" />
+                    </div>
+                    
+                }
                
             </div>
         </div>
@@ -29,7 +28,7 @@
             </div>
             <div class="d-flex row m-2">
                 <div class="d-flex justify-content-center ">
-                <img src="~/files/images/@Model.ProductImage" width="300px" />
+                <img src="~/files/images/@Model.Images" width="300px" />
                 </div>
             </div>
         </div>

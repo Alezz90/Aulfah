@@ -1,31 +1,52 @@
 ﻿using Aulfah.BLL.Interfaces;
+using Aulfah.DAL.Model;
 using Aulfah.Models;
+using Aulfah.PL.ModelsVM;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Aulfah.PL.Controllers
 {
     public class CustomerController : Controller
     {
         private readonly IUnitofWork _unitofWork;
-        public CustomerController(IUnitofWork unitofWork)
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+      
+        public CustomerController(IUnitofWork unitofWork, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _unitofWork = unitofWork;
+            _userManager = userManager;
+            _signInManager = signInManager;
+
         }
         public IActionResult Index()
         {
-            var cus = _unitofWork.CustomerRepository.GetAll();
+            var customer = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            return View(cus);
-        }
-        // tring to find prodact that customer but it in his cart 
-        public IActionResult customerCart(int? id)
-        {
-            if (id == null)
+            if (customer == null)
             {
                 return BadRequest();
             }
-            var cusCart = _unitofWork.CartRepository.Get(id.Value);
-            return View(cusCart);
+            ViewBag.Artist = customer;
+            var customerPage= _unitofWork.ArtistRepository.userservice(customer);
+
+            return View(customerPage);
+        }
+        // tring to find prodact that customer but it in his cart 
+        public IActionResult customerCart()
+        {
+            var customer = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (customer == null)
+            {
+                return BadRequest();
+            }
+            //var cusCart = _unitofWork.CartRepository.Get(id.Value);
+            var cusCart = _unitofWork.CartRepository.CustomerCart(customer);
+            // return View(cusCart);
+            return RedirectToAction("Home","CartController", cusCart);
 
         }
         public IActionResult Create()
@@ -46,7 +67,7 @@ namespace Aulfah.PL.Controllers
         }
 
         // Update customer 
-        public IActionResult Update(int id)
+        public IActionResult Update(string id)
         {
             var dep = _unitofWork.CustomerRepository.Get(id);
             return View(dep);
@@ -64,7 +85,7 @@ namespace Aulfah.PL.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirm(int id)
+        public IActionResult DeleteConfirm(string id)
         {
             var Cus = _unitofWork.CustomerRepository.Get(id);
             _unitofWork.CustomerRepository.Delete(Cus);

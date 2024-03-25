@@ -1,4 +1,4 @@
-﻿using Aulfah.Models;
+﻿using Aulfah.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aulfah.BLL.Interfaces
 {
-    public interface ICartRepository : IGenericRepository<Cart>
+    public interface IProductImageRepository : IGenericRepository<ProductImage>
     {
-
-        IEnumerable<Cart> CustomerCart(string id);
     }
 }

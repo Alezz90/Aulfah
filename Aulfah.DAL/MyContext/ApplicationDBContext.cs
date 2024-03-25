@@ -34,12 +34,8 @@ namespace Aulfah.DataContex
          .WithMany(p => p.Users)
          .UsingEntity(j => j.ToTable("UserServices"));
 
-            //modelBuilder.Entity<Service>()
-            //      .HasOne(s => s.User)
-            //      .WithMany(a => a.Service)
-            //      .HasForeignKey(s => s.ArtistId)
-            //      .OnDelete(DeleteBehavior.Restrict);
-
+            modelBuilder.Entity<ProductImage>()
+              .HasKey(e => new { e.ImageName, e.ProductId });
 
 
         }
@@ -53,6 +49,7 @@ namespace Aulfah.DataContex
         public DbSet<Cart> Cart { get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 

@@ -1,11 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Aulfah.DAL.Model;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Aulfah.Models
 {
     public class Product
+
     {
+        public Product()
+        {
+            Images = new List<ProductImage>();
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductId { get; set; }
@@ -13,7 +19,7 @@ namespace Aulfah.Models
         public string ProductName { get; set; }
         public double ProductPrice { get; set; }
         // Alezz add image to the produc
-        public string? ProductImage { get; set; }
+        //public string? ProductImage { get; set; }
         public string? Description { get; set; }
         public string? Size { get; set; }
         public int Quantity { get; set; }
@@ -21,6 +27,8 @@ namespace Aulfah.Models
         [ForeignKey("Users")]
         public string? Id { get; set; }
         public ICollection<ApplicationUser> Users { get; set; }
+
+        public ICollection<ProductImage> Images { get; set; }
 
         // alezz add category 
         [ForeignKey("category")]
