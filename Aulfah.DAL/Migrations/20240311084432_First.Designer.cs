@@ -12,18 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-<<<<<<< HEAD:Aulfah.DAL/Migrations/20240319060710_createtable.Designer.cs
-    [Migration("20240319060710_createtable")]
-    partial class createtable
-=======
-<<<<<<<< HEAD:Aulfah.DAL/Migrations/20240311090214_CartID.Designer.cs
-    [Migration("20240311090214_CartID")]
-    partial class CartID
-========
-    [Migration("20240304040536_create database")]
-    partial class createdatabase
->>>>>>>> 5b7dd95b65e1a70438b449a6ffd46cad6454f787:Aulfah.DAL/Migrations/20240304040536_create database.Designer.cs
->>>>>>> 69fef9893dae2d27943e22172ea9e8d4cdf0a8f5:Aulfah.DAL/Migrations/20240304040536_create database.Designer.cs
+    [Migration("20240311084432_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,6 +66,9 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CardNum")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CartId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -191,24 +184,13 @@ namespace Aulfah.DAL.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Aulfah.DAL.Model.ProductImage", b =>
-                {
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ImageName", "ProductId");
-
-                    b.ToTable("ProductImages");
-                });
-
             modelBuilder.Entity("Aulfah.Models.Cart", b =>
                 {
-                    b.Property<string>("CartId")
+                    b.Property<int>("CartId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"), 1L, 1);
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -229,9 +211,9 @@ namespace Aulfah.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
 
-                    b.Property<string>("CartID")
+                    b.Property<int?>("CartID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -242,6 +224,7 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ServiceID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("ShipmentID")
@@ -296,8 +279,8 @@ namespace Aulfah.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<string>("CartId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("CategoryID")
                         .HasColumnType("int");
@@ -306,6 +289,9 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")
@@ -340,12 +326,12 @@ namespace Aulfah.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrdersID")
+                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -354,6 +340,8 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ServiceID");
+
+                    b.HasIndex("OrdersID");
 
                     b.ToTable("Services");
                 });
@@ -548,24 +536,6 @@ namespace Aulfah.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ProductProductImage", b =>
-                {
-                    b.Property<int>("ProductImagesProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImagesImageName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ImagesProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductImagesProductId", "ImagesImageName", "ImagesProductId");
-
-                    b.HasIndex("ImagesImageName", "ImagesProductId");
-
-                    b.ToTable("ProductProductImage");
-                });
-
             modelBuilder.Entity("Aulfah.Models.Artist", b =>
                 {
                     b.HasBaseType("Aulfah.DAL.Model.ApplicationUser");
@@ -588,10 +558,6 @@ namespace Aulfah.DAL.Migrations
             modelBuilder.Entity("Aulfah.Models.Customer", b =>
                 {
                     b.HasBaseType("Aulfah.DAL.Model.ApplicationUser");
-
-                    b.Property<string>("CartId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.HasIndex("CartId")
                         .IsUnique()
@@ -646,7 +612,9 @@ namespace Aulfah.DAL.Migrations
 
                     b.HasOne("Aulfah.Models.Service", "Service")
                         .WithMany()
-                        .HasForeignKey("ServiceID");
+                        .HasForeignKey("ServiceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Aulfah.Models.Shipment", "Shipment")
                         .WithMany("Orders")
@@ -676,6 +644,15 @@ namespace Aulfah.DAL.Migrations
                     b.HasOne("Aulfah.Models.Cart", null)
                         .WithMany("Products")
                         .HasForeignKey("CartId");
+                });
+
+            modelBuilder.Entity("Aulfah.Models.Service", b =>
+                {
+                    b.HasOne("Aulfah.Models.Orders", "Orders")
+                        .WithMany()
+                        .HasForeignKey("OrdersID");
+
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("CategoryProduct", b =>
@@ -744,28 +721,11 @@ namespace Aulfah.DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProductProductImage", b =>
-                {
-                    b.HasOne("Aulfah.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductImagesProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Aulfah.DAL.Model.ProductImage", null)
-                        .WithMany()
-                        .HasForeignKey("ImagesImageName", "ImagesProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Aulfah.Models.Customer", b =>
                 {
                     b.HasOne("Aulfah.Models.Cart", "Cart")
                         .WithOne("Customers")
-                        .HasForeignKey("Aulfah.Models.Customer", "CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Aulfah.Models.Customer", "CartId");
 
                     b.Navigation("Cart");
                 });

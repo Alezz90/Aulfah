@@ -111,9 +111,6 @@ namespace Aulfah.DAL.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 

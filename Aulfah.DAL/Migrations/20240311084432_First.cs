@@ -5,11 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Aulfah.DAL.Migrations
 {
-<<<<<<< HEAD:Aulfah.DAL/Migrations/20240319060710_createtable.cs
-    public partial class createtable : Migration
-=======
     public partial class First : Migration
->>>>>>> 69fef9893dae2d27943e22172ea9e8d4cdf0a8f5:Aulfah.DAL/Migrations/20240304040536_create database.cs
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +27,8 @@ namespace Aulfah.DAL.Migrations
                 name: "Cart",
                 columns: table => new
                 {
-                    CartId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     totalPrice = table.Column<double>(type: "float", nullable: true)
                 },
@@ -65,18 +62,6 @@ namespace Aulfah.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Payments", x => x.PaymentId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductImages",
-                columns: table => new
-                {
-                    ImageName = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductImages", x => new { x.ImageName, x.ProductId });
                 });
 
             migrationBuilder.CreateTable(
@@ -166,10 +151,6 @@ namespace Aulfah.DAL.Migrations
                     Courses = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     socialMedia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ServicesType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-<<<<<<< HEAD:Aulfah.DAL/Migrations/20240319060710_createtable.cs
-                    CartId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-=======
->>>>>>> 69fef9893dae2d27943e22172ea9e8d4cdf0a8f5:Aulfah.DAL/Migrations/20240304040536_create database.cs
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -203,12 +184,13 @@ namespace Aulfah.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductPrice = table.Column<double>(type: "float", nullable: false),
+                    ProductImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Size = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryID = table.Column<int>(type: "int", nullable: true),
-                    CartId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    CartId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -232,7 +214,7 @@ namespace Aulfah.DAL.Migrations
                     TrackID = table.Column<int>(type: "int", nullable: false),
                     ShipmentID = table.Column<int>(type: "int", nullable: false),
                     PaymentID = table.Column<int>(type: "int", nullable: false),
-                    CartID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    CartID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -402,31 +384,6 @@ namespace Aulfah.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductProductImage",
-                columns: table => new
-                {
-                    ProductImagesProductId = table.Column<int>(type: "int", nullable: false),
-                    ImagesImageName = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ImagesProductId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductProductImage", x => new { x.ProductImagesProductId, x.ImagesImageName, x.ImagesProductId });
-                    table.ForeignKey(
-                        name: "FK_ProductProductImage_Product_ProductImagesProductId",
-                        column: x => x.ProductImagesProductId,
-                        principalTable: "Product",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductProductImage_ProductImages_ImagesImageName_ImagesProductId",
-                        columns: x => new { x.ImagesImageName, x.ImagesProductId },
-                        principalTable: "ProductImages",
-                        principalColumns: new[] { "ImageName", "ProductId" },
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserProduct",
                 columns: table => new
                 {
@@ -533,11 +490,6 @@ namespace Aulfah.DAL.Migrations
                 column: "CartId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductProductImage_ImagesImageName_ImagesProductId",
-                table: "ProductProductImage",
-                columns: new[] { "ImagesImageName", "ImagesProductId" });
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserProduct_UsersId",
                 table: "UserProduct",
                 column: "UsersId");
@@ -572,9 +524,6 @@ namespace Aulfah.DAL.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "ProductProductImage");
-
-            migrationBuilder.DropTable(
                 name: "UserProduct");
 
             migrationBuilder.DropTable(
@@ -594,9 +543,6 @@ namespace Aulfah.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Track");
-
-            migrationBuilder.DropTable(
-                name: "ProductImages");
 
             migrationBuilder.DropTable(
                 name: "Product");

@@ -29,7 +29,9 @@ namespace Aulfah.PL.Controllers
             {
                 return BadRequest();
             }
-            var cart = _unitofWork.CartRepository.Get(customerCart.CartId);
+            
+                var cart = _unitofWork.CartRepository.Get((int)customerCart.CartId);
+            
 
             ViewData["Customer Cart"] = cart;
 
