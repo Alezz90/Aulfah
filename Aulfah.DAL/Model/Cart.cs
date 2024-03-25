@@ -8,7 +8,7 @@ namespace Aulfah.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CartId { get; set; }
+        public string CartId { get; set; }
         public int Quantity { get; set; }
         [DataType(DataType.Currency)]
         public double? totalPrice { get; set; }

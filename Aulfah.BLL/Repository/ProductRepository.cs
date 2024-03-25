@@ -37,5 +37,18 @@ namespace Aulfah.DAL.Repositories
 
             return prod;
         }
+        public IEnumerable<Product> ProductList()
+        {
+
+            var prod = _context.Product.Include(p => p.Images).Select(p => new Product
+            {
+                ProductId = p.ProductId,
+                ProductName = p.ProductName,
+                 Description = p.Description,
+                Images = p.Images.Take(1).ToList()
+            }).ToList() ;
+
+            return prod;
+        }
     }
 }

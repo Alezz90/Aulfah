@@ -17,7 +17,7 @@ namespace Aulfah.DAL.Repositories
             return _context.Set<T>().ToList();
         }
 
-        public T Get(int id)
+        public T Get(string id)
         {
 
             return _context.Set<T>().Find(id);

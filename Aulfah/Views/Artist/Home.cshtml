@@ -151,10 +151,9 @@
                 <h2>  No Products Available </h2>
             }
         </div>
-    </div>
+
         <!-- ================= My Product ================ -->
         <div class="recentProduct">
-        <div class="recentServices">
             <div class="cardHeader">
                 <h2>Recent Product</h2>
             </div>
@@ -171,17 +170,19 @@
                     <tbody>
                         @foreach (var product in artistProduct)
                         {
-                           // foreach (var product in artist.Products)
-                            //{
+
                             <tr>
+                                @foreach (var prod in product.Images)
+                                {
                                 <td width="60px">
                                     @* ProductPic *@
                                     <div class="imgBx">
-                                        <img src="~/Files/Images/@product.ProductImage" alt="@product.ProductName" />
+                                        <img src="~/Files/Images/@prod.ProductImages" alt="@product.ProductName" />
                                     </div>
                                 </td>
+                                }
                                 <td>
-                                        <h4>@product.ProductName  <span>@product.Quantity</span> $ @product.ProductPrice</h4>
+                                        <h4>@product.ProductName  <span>@product.</span> $ @product.ProductPrice</h4>
                                 </td>
                             </tr>
                         }
@@ -197,5 +198,5 @@
         </div>
     </div>
 </div>
-</div>
+
 

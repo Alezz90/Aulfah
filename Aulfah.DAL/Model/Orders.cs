@@ -36,7 +36,7 @@ namespace Aulfah.Models
         public Payment Payment { get; set; }
 
         [ForeignKey("Cart")]
-        public int? CartID { get; set; }
+        public string? CartID { get; set; }
         public Cart Cart { get; set; }
 
     }

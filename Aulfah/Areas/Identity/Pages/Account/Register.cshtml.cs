@@ -164,8 +164,6 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.FName= Input.Fname;
                 user.LName = Input.Lname;
-                //why we dont mensition email
-               // user.Email = Input.Email;
                 user.dateOfBirth= Input.DateOfBirth;
                 user.PhoneNumber = Input.PhoneNumber;
 
@@ -178,7 +176,6 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account
                     if (!String.IsNullOrEmpty(Input.Role))
                     {
                         await _userManager.AddToRoleAsync(user, Input.Role);
-                        //await _roleInManager.AddClaimAsync(Input.Role);
 
                     }
                     else

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240304040536_create database")]
-    partial class createdatabase
+    [Migration("20240319060710_createtable")]
+    partial class createtable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -184,13 +184,24 @@ namespace Aulfah.DAL.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Aulfah.Models.Cart", b =>
+            modelBuilder.Entity("Aulfah.DAL.Model.ProductImage", b =>
                 {
-                    b.Property<int>("CartId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"), 1L, 1);
+                    b.HasKey("ImageName", "ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("Aulfah.Models.Cart", b =>
+                {
+                    b.Property<string>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -211,9 +222,9 @@ namespace Aulfah.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
 
-                    b.Property<int?>("CartID")
+                    b.Property<string>("CartID")
                         .IsRequired()
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -278,8 +289,8 @@ namespace Aulfah.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<int?>("CartId")
-                        .HasColumnType("int");
+                    b.Property<string>("CartId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("CategoryID")
                         .HasColumnType("int");
@@ -288,9 +299,6 @@ namespace Aulfah.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")
@@ -533,6 +541,24 @@ namespace Aulfah.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ProductProductImage", b =>
+                {
+                    b.Property<int>("ProductImagesProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagesImageName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ImagesProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductImagesProductId", "ImagesImageName", "ImagesProductId");
+
+                    b.HasIndex("ImagesImageName", "ImagesProductId");
+
+                    b.ToTable("ProductProductImage");
+                });
+
             modelBuilder.Entity("Aulfah.Models.Artist", b =>
                 {
                     b.HasBaseType("Aulfah.DAL.Model.ApplicationUser");
@@ -556,8 +582,9 @@ namespace Aulfah.DAL.Migrations
                 {
                     b.HasBaseType("Aulfah.DAL.Model.ApplicationUser");
 
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
+                    b.Property<string>("CartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasIndex("CartId")
                         .IsUnique()
@@ -706,6 +733,21 @@ namespace Aulfah.DAL.Migrations
                     b.HasOne("Aulfah.DAL.Model.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProductProductImage", b =>
+                {
+                    b.HasOne("Aulfah.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductImagesProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aulfah.DAL.Model.ProductImage", null)
+                        .WithMany()
+                        .HasForeignKey("ImagesImageName", "ImagesProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

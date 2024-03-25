@@ -9,7 +9,7 @@ namespace Aulfah.BLL.Interfaces
     public interface IGenericRepository<T>
     {
         IEnumerable<T> GetAll();
-        T Get(int id);
+        T Get(string id);
         
         int Create(T item);
         int Update(T item);
