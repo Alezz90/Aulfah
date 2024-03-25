@@ -16,35 +16,35 @@
         <form class="">
             <div class="row">
             <div class="col-6">
-               <label for="FName" class="form-label mt-2">First Name</label>
-               <input asp-for="FName" class="form-control" id="FName" placeholder="Enter Your First Name">
+               <label asp-for="FName" class="form-label mt-2">First Name</label>
+               <input asp-for="FName" class="form-control" id="FName" placeholder="Enter Your First Name" value="@Model.FName">
             </div>
             <div class="col-6">
-                <label for="LName" class="form-label mt-2">Last Name</label>
+                <label asp-for="LName" class="form-label mt-2">Last Name</label>
                 <input asp-for="LName" class="form-control" id="LName" placeholder="Enter Your Last Name">
             </div>
             </div>
-            <label for="Email" class="form-label mt-2">Email</label>
-            <input type="email" class="form-control" id="Email" placeholder="Enter Your Email">
+            <label asp-for="Email" class="form-label mt-2">Email</label>
+            <input type="email" asp-for="Email" class="form-control" id="Email" placeholder="Enter Your Email">
 
-            <label for="PhoneNumber" class="form-label mt-2">Phone Number</label>
+            <label asp-for="PhoneNumber" class="form-label mt-2">Phone Number</label>
             <input asp-for="PhoneNumber" class="form-control" id="PhoneNumber" placeholder="Enter Your Phone Number">
 
-            <label for="dateOfBirth" class="form-label mt-2">Date of Birth</label>
-            <input type="date" class="form-control" id="dateOfBirth" placeholder="DD/MM/YYYY">
+            <label asp-for="dateOfBirth" class="form-label mt-2">Date of Birth</label>
+            <input type="date" asp-for="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="DD/MM/YYYY">
             <div class="row">
                 <div class="col-6">
-                    <label for="Goverment" class="form-label mt-2">Goverment</label>
+                    <label asp-for="Goverment" class="form-label mt-2">Goverment</label>
                     <input asp-for="Goverment" class="form-control" id="Goverment" placeholder="Enter Your Goverment">
                 </div>
                 <div class="col-6">
-                    <label for="State" class="form-label mt-2">State</label>
+                    <label asp-for="State" class="form-label mt-2">State</label>
                     <input asp-for="State" class="form-control" id="State" placeholder="Enter Your State">
                 </div>
             </div>
 
-            <label for="Password" class="form-label mt-2">Password</label>
-            <input asp-for="PasswordHash" class="form-control" id="State" placeholder="*********">
+           @*  <label for="Password" class="form-label mt-2">Password</label>
+            <input asp-for="PasswordHash" class="form-control" id="State" placeholder="*********"> *@
 
             <button type="submit" class="btn w-25 mt-3"> Edit </button>
         </form>
@@ -57,13 +57,13 @@
         </div>
         <form>
 
-            <label for="Skills" class="form-label mt-2">Skills</label>
+            <label asp-for="Skills" class="form-label mt-2">Skills</label>
             <input asp-for="Skills" class="form-control" id="Skills" placeholder="Add Skills">
 
-            <label for="Courses" class="form-label mt-2">Courses</label>
+            <label asp-for="Courses" class="form-label mt-2">Courses</label>
             <input asp-for="Courses" class="form-control" id="Courses" placeholder="Add Courses">
 
-            <label for="socialMedia" class="form-label mt-2">Social Media</label>
+            <label asp-for="socialMedia" class="form-label mt-2">Social Media</label>
             <input asp-for="socialMedia" class="form-control" id="socialMedia" placeholder="Add your Social Media">
 
             <button asp-action="Update" class="btn w-25 mt-3"> Edit </button>

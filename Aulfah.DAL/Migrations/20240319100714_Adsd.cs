@@ -4,7 +4,7 @@
 
 namespace Aulfah.DAL.Migrations
 {
-    public partial class RemoveCompanyRole : Migration
+    public partial class Adsd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

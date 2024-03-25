@@ -23,8 +23,8 @@
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4>Full Name</h4>
-                                <p class="text-secondary mb-1">Email</p>
+                                <h4>@Model.FName @Model.LName </h4>
+                                <p class="text-secondary mb-1">@Model.Email</p>
 
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Kenneth Valdez
+                                @Model.FName
                             </div>
                         </div>
                         <hr>
@@ -49,7 +49,7 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                fip@jukmuh.al
+                                @Model.Email
                             </div>
                         </div>
                         <hr>
@@ -58,7 +58,7 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                (239) 816-9029
+                                @Model.PhoneNumber
                             </div>
                         </div>
                         <hr>
@@ -67,7 +67,7 @@
                                 <h6 class="mb-0">Birthday</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                (320) 380-4539
+                                @Model.dateOfBirth
                             </div>
                         </div>
                         <hr>
@@ -76,20 +76,62 @@
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Bay Area, San Francisco, CA
+                                @* jjjjj *@
+                                @(Model.State == null ? "--" : Model.State), 
+                                @(Model.Region == null ? "--" : Model.Region), 
+                                @(Model.Goverment == null ? "--" : Model.Goverment)
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Service Type</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @(Model.ServicesType == null ? "NA" : Model.ServicesType)
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Skills</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                @(Model.Skills == null ? "NA" : Model.Skills)
+                                </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Courses</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @(Model.Courses == null ? "NA" : Model.Courses)
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Social Media</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @(Model.socialMedia == null ? "NA" : Model.socialMedia)
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info w-25 " target="__blank" asp-action="EditProfile" asp-controller="Artist">Edit</a>
+                                @* <a class="btn btn-info w-25 " target="__blank" asp-action="EditProfile" asp-controller="Artist">Edit</a> *@
+                                <a class="btn btn-info w-25 " target="__blank" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit</a>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
+        @* 
         <div class="row">
             <div class="col-4"></div>
             <div class="col-md-8">
@@ -122,16 +164,16 @@
                             </div>
                         </div>
                         <hr>
-                       @*  <div class="row">
+                       <div class="row">
                             <div class="col-sm-12">
                                 <a class="btn btn-info w-25 " target="__blank" asp-action="EditProfile" asp-controller="Artist">Edit</a>
                             </div>
-                        </div> *@
+                        </div> 
                     </div>
                 </div>
 
             </div>
         </div>
-
+         *@
     </div>
 </div>

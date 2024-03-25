@@ -16,9 +16,16 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userFirstName</a>
+            @* <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userFirstName</a> *@
             @* <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-action="EditProfile" asp-controller="Artist"  title="Manage">Hello @userFirstName</a> *@
-
+            @if (User.IsInRole(SD.Role_Artist))
+            {
+                <a class="nav-link text-dark" asp-area="Identity" asp-controller="Artist" asp-action="Profile">Hello @userFirstName</a>
+            }
+            else
+            {
+                <a class="nav-link text-dark" asp-area="Identity" asp-controller="Customer" asp-action="Profile">Hello @userFirstName</a>
+            }
         </li>
     
 }

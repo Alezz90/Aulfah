@@ -24,6 +24,7 @@ namespace Aulfah.PL.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
 
+
         public ArtistController(IUnitofWork unitofWork, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _unitofWork = unitofWork;
@@ -149,9 +150,10 @@ namespace Aulfah.PL.Controllers
             return RedirectToAction("Home");
         }
 
-        public IActionResult Profile()
+        public async Task<IActionResult>  Profile()
         {
-            return View();
+            var loggedInUser = await _userManager.GetUserAsync(User);
+            return View(loggedInUser);
         }
 
         public IActionResult EditProfile()

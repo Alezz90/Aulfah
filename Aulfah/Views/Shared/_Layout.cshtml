@@ -58,14 +58,27 @@
                     @if (User.IsInRole(SD.Role_Customer) || User.IsInRole(SD.Role_Artist))
                     {
                         <li class="nav-item mx-auto my-auto">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Artist" asp-action="Home">
-                                <i class="bi bi-person-circle iconAccount"></i>
-                            </a>
-                        </li>
+                            @if (User.IsInRole(SD.Role_Artist))
+                            {
+                                <a class="nav-link text-dark" asp-area="Identity" asp-controller="Artist" asp-action="Profile">
+                                        <i class="bi bi-person-circle iconAccount"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-area="Identity" asp-controller="Customer" asp-action="Profile">
+                                        <i class="bi bi-person-circle iconAccount"></i>
+                                </a>
+                                
+                            }
+
+                            </li>
                             }
                     <li class="nav-item mx-auto my-auto">
                         <partial name="_LoginPartial" />
                     </li>
+
+
                    <!-- testing product view-->
                  @*    <li class="nav-item mx-auto my-auto">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Create">

@@ -12,13 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aulfah.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-<<<<<<<< HEAD:Aulfah.DAL/Migrations/20240311090214_CartID.Designer.cs
-    [Migration("20240311090214_CartID")]
-    partial class CartID
-========
-    [Migration("20240304040536_create database")]
-    partial class createdatabase
->>>>>>>> 5b7dd95b65e1a70438b449a6ffd46cad6454f787:Aulfah.DAL/Migrations/20240304040536_create database.Designer.cs
+    [Migration("20240319100334_Add")]
+    partial class Add
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

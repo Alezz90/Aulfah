@@ -89,7 +89,7 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account.Manage
             public string? Goverment { get; set; }
             public string? State { get; set; }
             //Image
-            public string? UserImage { get; set; }
+            public string UserImage { get; set; }
             public IFormFile UserPath { get; set; }
             public string? Skills { get; set; }
             public string? Courses { get; set; }
@@ -203,7 +203,10 @@ namespace Aulfah.PL.Areas.Identity.Pages.Account.Manage
                 user.PhoneNumber = Input.PhoneNumber;
                 user.Goverment = Input.Goverment;
                 user.State = Input.State;
+            //  user.UserImage = DucomentConfi.DocumentUplod( "artistpic", Input.UserPath);
+
                 user.UserImage = DucomentConfi.DocumentUplod(Input.UserPath, "ArtistPic");
+
 
 
             /* If The user Logged In is Artist Only */
