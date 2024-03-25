@@ -151,7 +151,6 @@
                 </ul>
 
             </div>
-            @* <a href="#" class="link toggle collapsed mx-5" data-bs-toggle="collapse" data-bs-target="#sidebar-collapse" aria-expanded="false"><i class="bi bi-three-dots iconNav"></i></a> *@
             <div class="col col-7 my-auto">
                 <form asp-controller="Home" asp-action="Index" method="post" class="form-inputs ">
                     <input type="text" title="search" name="name" class="form-control rounded-pill searchfrorm" />
@@ -193,112 +192,7 @@
 
         </nav>
     </header>
-    @* ----------SIDE BAR--------- *@
-    @*<div class="collapse wrapper" id="sidebar-collapse">
-
-
-        <nav class="flex-shrink-0 p-3 sidebar" id="sidebar" style="width: 280px;">
-            <a href="/" class="d-flex align-items-center pb-3 mb-1 link-light text-decoration-none border-bottom ">
-
-                <div class="collapse" id="sidebar-collapse">
-                    <p><i class="fa-solid fa-user mx-1" style="color: #ffffff;"></i>User Name</p>
-                    <p><i class="fa-solid fa-envelope mx-1" style="color: #ffffff;"></i>email@gmail.com</p>
-                </div>
-
-            </a>
-            <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <a href="#" class=" link link-light toggle align-items-center rounded collapsed text-decoration-none" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-house mx-1" style="color: #ffffff;"></i> Home
-                    </a>
-                    <div class="collapse" id="home-collapse">
-                        <ul class="toggle-nav list fw-normal pb-1 small">
-                            @if (User.IsInRole(SD.Role_Artist))
-                            {
-                                <li><a asp-action="Home" asp-controller="Artist" class="link-light rounded text-decoration-none">Home page</a></li>
-                            }
-                            else if (User.IsInRole(SD.Role_Customer))
-                            {
-                                <li><a asp-action="Index" asp-controller="Home" class="link-light rounded text-decoration-none">Home page</a></li>
-
-                            }
-                            <li><a class="link-light rounded text-decoration-none">About Aulfah</a></li>
-                            <li><a asp-action="Index" asp-controller="Cart" class="link-light rounded text-decoration-none">Orders</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <a href="#" class=" link link-light toggle align-items-center rounded collapsed text-decoration-none" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-shapes mx-1" style="color: #ffffff;"></i>Categories
-                    </a>
-                    <div class="collapse" id="dashboard-collapse">
-                        <ul class="toggle-nav list fw-normal pb-1 small text-decoration-none">
-                            <li><a asp-action="Index" asp-controller="Category" class="link-light rounded text-decoration-none">All Category</a></li>
-                            <li><a href="#" class="link-light rounded text-decoration-none">Category 1</a></li>
-                            <li><a href="#" class="link-light rounded text-decoration-none">Category 2</a></li>
-                            <li><a href="#" class="link-light rounded text-decoration-none">Category 3</a></li>
-                           
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <a asp-action="Index" asp-controller="Product" class="link link-light align-items-center rounded text-decoration-none">
-                        <i class="fa-solid fa-bag-shopping mx-1" style="color: #ffffff;"></i>Products
-                    </a>
-                </li>
-                <li class="mb-1">
-                    <a asp-action="Home" asp-controller="Artist" class="link link-light align-items-center rounded text-decoration-none">
-                        <i class="fa-solid fa-palette mx-1" style="color: #ffffff;"></i>Artist
-                    </a>
-                  
-                </li>
-                @if (User.IsInRole(SD.Role_Customer))
-                {
-                    
-                <li class="mb-1">
-                    <a href="#" class=" link link-light toggle align-items-center rounded collapsed text-decoration-none" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-star mx-1" style="color: #ffffff;"></i>Customize Products
-                    </a>
-                </li>
-                }else if (User.IsInRole(SD.Role_Artist))
-                {
-
-                <li class="mb-1">
-                    <a href="#" class=" link link-light toggle align-items-center rounded collapsed text-decoration-none" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-star mx-1" style="color: #ffffff;"></i>Services
-                    </a>
-                </li>
-                }
-                <li class="border-top my-3"></li>
-                <li class="mb-1">
-                    <a href="#" class=" link link-light toggle align-items-center rounded collapsed text-decoration-none" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                        <i class="fa-solid fa-user mx-1" style="color: #ffffff;"></i>Account
-                    </a>
-                    <div class="collapse" id="account-collapse">
-                        <ul class="btn-toggle-nav list fw-normal pb-1 small text-decoration-none">
-
-                           @if (User.IsInRole(SD.Role_Customer))
-                            {
-                                <li><a asp-action="Profile" asp-controller="Customer" class="link-light rounded text-decoration-none">Profile</a></li>
-
-                            }
-                            else if (User.IsInRole(SD.Role_Artist))
-                            {
-                                <li><a asp-action="Profile" asp-controller="Artist" class="link-light rounded text-decoration-none">Profile</a></li>
-
-                            }
-                            <li><a href="#" class="link-light rounded text-decoration-none">Settings</a></li>
-                            <li class="nav-item">
-                                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                    <input id="logout" type="submit" class="input-group-text border-0" value="Logout" style="background: #1C395E; color:#ffffff;" />
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </div>*@
+   
     <div class="container pb-3">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -336,7 +230,7 @@
             <div class="help">
                
                     <form>
-                        <h5> <i class="bi bi-question-circle-fill"></i> Need Help?</h5>
+                        <h6> <i class="bi bi-question-circle-fill"></i> Need Help?</h6>
                         <div class="d-flex flex-column flex-sm-row w-100 gap-2">
                             <label for="newsletter1" class="visually-hidden">Email address</label>
                             <input id="newsletter1" type="text" class="form-control" placeholder="Enter your question here">
