@@ -20,11 +20,11 @@
             @* <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-action="EditProfile" asp-controller="Artist"  title="Manage">Hello @userFirstName</a> *@
             @if (User.IsInRole(SD.Role_Artist))
             {
-                <a class="nav-link text-dark" asp-area="Identity" asp-controller="Artist" asp-action="Profile">Hello @userFirstName</a>
+                <a class="nav-link text-light"  style="color:#A2D48D;" asp-area="Identity" asp-controller="Artist" asp-action="Profile">Hello @userFirstName</a>
             }
             else
             {
-                <a class="nav-link text-dark" asp-area="Identity" asp-controller="Customer" asp-action="Profile">Hello @userFirstName</a>
+                <a class="nav-link text-light"  style="color:#A2D48D;" asp-area="Identity" asp-controller="Customer" asp-action="Profile">Hello @userFirstName</a>
             }
         </li>
     
@@ -32,10 +32,10 @@
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link" style="color:#A2D48D;" id="register" asp-area="Identity" asp-page="/Account/Register">Register/ </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link" style="color:#A2D48D; id="login" asp-area="Identity" asp-page="/Account/Login"> Login</a>
     </li>
 }
 </ul>

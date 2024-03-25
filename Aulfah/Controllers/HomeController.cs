@@ -40,6 +40,10 @@ namespace Aulfah.Controllers
 
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
 
     }
 }

@@ -69,8 +69,8 @@ html {
 .buttonDark {
     color: white;
     background-color: #1C395E;
-    font-size: 1.5vw;
-    width:10vw;
+    font-size: 1vw;
+    width:8vw;
     right: 10px;
     top: 5px;
 }
@@ -99,4 +99,20 @@ body {
 .main-body {
     color: #1C395E;
 }
+
+.linkcolor li a {
+    color:#1C395E;
+}
+.linkcolor a {
+    color: #1C395E;
+}
+
+.about{
+    color:#A2D48D;
+}
+
+/*.dropdown:hover .dropdown-menu {
+    background-color: #1C395E ;
+    color: #A2D48D;
+}*/
 

@@ -17,7 +17,7 @@ namespace Aulfah.DAL.Repositories
 
         public IEnumerable<Service> UserServices(string Userid)
         {
-            var prod = _context.Services.Where(e => e.Id == Userid).ToList();
+            var prod = _context.Services.Where(e => e.ServiceID.ToString()  == Userid).ToList();
 
             return prod;
         }

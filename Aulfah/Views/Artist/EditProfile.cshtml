@@ -2,8 +2,13 @@
 
 
 <div class="container">
+    <div class="mt-3">
+        <a asp-action="Home" asp-controller="Artist" class="text-decoration-none ">
+            <i class="fa-solid fa-arrow-left" style="color:#1C395E;"></i>
+        </a>
+    </div>
     <div class="row-1 ">
-        <div class="text-center mt-3">
+        <div class="text-center ">
             <h2>Edit Profile</h2>
         </div>
 
@@ -16,37 +21,37 @@
         <form class="">
             <div class="row">
             <div class="col-6">
-               <label asp-for="FName" class="form-label mt-2">First Name</label>
+               <label asp-for="FName" class="form-label mt-3">First Name</label>
                <input asp-for="FName" class="form-control" id="FName" placeholder="Enter Your First Name" value="@Model.FName">
             </div>
             <div class="col-6">
-                <label asp-for="LName" class="form-label mt-2">Last Name</label>
+                <label asp-for="LName" class="form-label mt-3">Last Name</label>
                 <input asp-for="LName" class="form-control" id="LName" placeholder="Enter Your Last Name">
             </div>
             </div>
-            <label asp-for="Email" class="form-label mt-2">Email</label>
+            <label asp-for="Email" class="form-label mt-3">Email</label>
             <input type="email" asp-for="Email" class="form-control" id="Email" placeholder="Enter Your Email">
 
-            <label asp-for="PhoneNumber" class="form-label mt-2">Phone Number</label>
+            <label asp-for="PhoneNumber" class="form-label mt-3">Phone Number</label>
             <input asp-for="PhoneNumber" class="form-control" id="PhoneNumber" placeholder="Enter Your Phone Number">
 
-            <label asp-for="dateOfBirth" class="form-label mt-2">Date of Birth</label>
+            <label asp-for="dateOfBirth" class="form-label mt-3">Date of Birth</label>
             <input type="date" asp-for="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="DD/MM/YYYY">
             <div class="row">
                 <div class="col-6">
-                    <label asp-for="Goverment" class="form-label mt-2">Goverment</label>
+                    <label asp-for="Goverment" class="form-label mt-3">Goverment</label>
                     <input asp-for="Goverment" class="form-control" id="Goverment" placeholder="Enter Your Goverment">
                 </div>
                 <div class="col-6">
-                    <label asp-for="State" class="form-label mt-2">State</label>
+                    <label asp-for="State" class="form-label mt-3">State</label>
                     <input asp-for="State" class="form-control" id="State" placeholder="Enter Your State">
                 </div>
             </div>
 
-           @*  <label for="Password" class="form-label mt-2">Password</label>
+           @*  <label for="Password" class="form-label mt-3">Password</label>
             <input asp-for="PasswordHash" class="form-control" id="State" placeholder="*********"> *@
 
-            <button type="submit" class="btn w-25 mt-3"> Edit </button>
+            @* <button type="submit" class="btn buttonDark mt-4"> Edit </button> *@
         </form>
                
     </div>
@@ -57,20 +62,21 @@
         </div>
         <form>
 
-            <label asp-for="Skills" class="form-label mt-2">Skills</label>
+            <label asp-for="Skills" class="form-label mt-3">Skills</label>
             <input asp-for="Skills" class="form-control" id="Skills" placeholder="Add Skills">
 
-            <label asp-for="Courses" class="form-label mt-2">Courses</label>
+            <label asp-for="Courses" class="form-label mt-3">Courses</label>
             <input asp-for="Courses" class="form-control" id="Courses" placeholder="Add Courses">
 
-            <label asp-for="socialMedia" class="form-label mt-2">Social Media</label>
+            <label asp-for="socialMedia" class="form-label mt-3">Social Media</label>
             <input asp-for="socialMedia" class="form-control" id="socialMedia" placeholder="Add your Social Media">
 
-            <button asp-action="Update" class="btn w-25 mt-3"> Edit </button>
         </form>
 
         </div>
-
+        <div class="text-baseline">
+            <button asp-action="Update" type="submit" class="btn buttonDark mb-5 mx-5"> Save </button>
+    </div>
     </div>
 
 

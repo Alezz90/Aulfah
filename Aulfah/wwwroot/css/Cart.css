@@ -33,7 +33,7 @@
    
 }
     .btn:hover {
-        border: 2px solid #1C395E;
+       /* border: 2px solid #1C395E;*/
         background-color: #A2D48D;
         color: #1C395E;
     }

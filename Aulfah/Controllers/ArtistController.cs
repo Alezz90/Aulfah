@@ -160,5 +160,10 @@ namespace Aulfah.PL.Controllers
         {
             return View();
         }
+
+        public IActionResult Setting()
+        {
+            return View();
+        }
     }
 }
